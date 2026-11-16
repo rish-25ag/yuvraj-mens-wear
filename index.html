@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Yuvraj Mens Wear</title>
 <meta name="claude:viewport-fit-sides" content="cover">
-<meta name="description" content="Yuvraj Mens Wear, Shiv Thakur Lane, Daccapatty, Burrabazar, Kolkata. Ready-made formal, ethnic, winter, casual and sportswear for men, sizes S to 5XL. Open 11 AM to 9 PM.">
+<meta name="description" content="Yuvraj Mens Wear, Shiv Thakur Lane, Daccapatty, Burrabazar, Kolkata. Ready-made formal, ethnic, winter, casual and sportswear for men, sizes S to 5XL. Open 11 AM to 9 PM. Run by Ravi Agarwal since 2002.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@400;500;600;700&family=Tiro+Devanagari+Hindi&display=swap">
@@ -160,6 +160,26 @@ section { padding-block: 96px; }
 .quote { margin-top: 64px; padding-top: 40px; border-top: 1px solid var(--line); font-family: var(--font-logo); font-size: clamp(28px, 4vw, 48px); line-height: 1.15; max-width: 24ch; }
 .quote em { color: var(--accent); }
 
+/* ---------- about ---------- */
+.about-band { background: var(--tile); }
+.about { display: grid; grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr); gap: 64px; align-items: center; }
+@media (max-width: 860px) { .about { grid-template-columns: 1fr; gap: 36px; } }
+.owner { margin: 0; display: grid; gap: 12px; max-width: 420px; }
+.owner img { width: 100%; height: auto; aspect-ratio: 3 / 5; object-fit: cover; }
+.owner figcaption { font-size: 13px; color: var(--muted); }
+.owner figcaption b { color: var(--fg); font-weight: 600; }
+.about h2 { font-family: var(--font-logo); font-size: clamp(48px, 8vw, 104px); line-height: .95; margin-block: 14px 28px; }
+.about h2 em { color: var(--accent); }
+.about-text { display: grid; gap: 16px; font-size: 18px; max-width: 54ch; }
+.about-text p:not(:first-child) { color: var(--muted); font-size: 16px; }
+.stats { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); margin-top: 36px; border-top: 1px solid var(--fg); }
+.stats div { padding: 18px 16px 0 0; display: grid; gap: 4px; }
+.stats div + div { padding-left: 16px; border-left: 1px solid var(--line); }
+.stats strong { font-family: var(--font-logo); font-weight: 400; font-size: clamp(30px, 4vw, 44px); line-height: 1; }
+.stats span { font-size: 13px; color: var(--muted); }
+.stats strong { white-space: nowrap; }
+@media (max-width: 520px) { .stats strong { font-size: 26px; } .owner { max-width: 300px; } }
+
 /* ---------- visit ---------- */
 .visit-band { border-top: 1px solid var(--line); }
 .visit { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr); gap: 56px; }
@@ -293,6 +313,7 @@ footer .logo { font-size: clamp(44px, 8vw, 88px); }
     <div class="nav-links">
       <a href="#collections">Collections</a>
       <a href="#looks">Looks</a>
+      <a href="#about">About</a>
       <a href="#visit">Visit</a>
       <a class="btn btn-solid" href="https://wa.me/917980965523" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2c-1.5 0-3-.4-4.3-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.2-.4.7-1.4.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.7 11.8 11.8 0 0 0 4.5 4c1.7.7 2.3.8 3.2.6.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.2-1.2-.1-.1-.3-.2-.5-.3z"/></svg>WhatsApp</a>
     </div>
@@ -304,7 +325,7 @@ footer .logo { font-size: clamp(44px, 8vw, 88px); }
     <div class="hero-grid">
       <h1>Dressed for every <em>occasion.</em></h1>
       <div class="hero-side">
-        <div class="kicker"><b>Yuvraj Men's Wear</b> · Burrabazar, Kolkata</div>
+        <div class="kicker"><b>Yuvraj Men's Wear</b> · Burrabazar, Kolkata · Since 2002</div>
         <p>Office shirts, wedding sherwanis, winter jackets and gym wear. Ready-made clothes for men in sizes S to 5XL.</p>
         <div class="hindi" lang="hi">युवराज मेन्स वियर</div>
         <div class="hero-actions">
@@ -448,6 +469,29 @@ footer .logo { font-size: clamp(44px, 8vw, 88px); }
     </div>
   </section>
 
+  <section id="about" class="about-band">
+    <div class="wrap about">
+      <figure class="owner">
+        <img src="photos/owner.jpg" alt="Ravi Agarwal, owner of Yuvraj Mens Wear, in a lavender embroidered kurta and white pajama" width="600" height="1000">
+        <figcaption><b>Ravi Agarwal</b> · Owner, Yuvraj Mens Wear</figcaption>
+      </figure>
+      <div>
+        <div class="kicker">Our story</div>
+        <h2>Since <em>2002.</em></h2>
+        <div class="about-text">
+          <p>Ravi Agarwal opened Yuvraj Mens Wear in 2002 on Shiv Thakur Lane, in Daccapatty, Burrabazar.</p>
+          <p>For more than 20 years he has helped Kolkata's men find the right clothes, from a first office shirt to a wedding sherwani. He picks the stock himself, keeps Burrabazar prices, and makes sure there is a size for everyone, all the way up to 5XL.</p>
+          <p>Come to the shop and ask for Ravi ji. He'll help you put the whole outfit together.</p>
+        </div>
+        <div class="stats">
+          <div><strong>2002</strong><span>Year we opened</span></div>
+          <div><strong>20+</strong><span>Years in menswear</span></div>
+          <div><strong>S–5XL</strong><span>Sizes in stock</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <section id="visit" class="visit-band">
     <div class="wrap visit">
       <div>
@@ -501,7 +545,7 @@ footer .logo { font-size: clamp(44px, 8vw, 88px); }
         <span>Open 11 AM – 9 PM</span>
       </div>
     </div>
-    <div class="f-bottom">Ready-made clothes for men · Formal · Ethnic · Winter · Casual · Sports · S to 5XL</div>
+    <div class="f-bottom">Since 2002 · Ready-made clothes for men · Formal · Ethnic · Winter · Casual · Sports · S to 5XL</div>
   </div>
 </footer>
 
