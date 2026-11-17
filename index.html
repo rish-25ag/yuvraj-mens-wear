@@ -261,6 +261,33 @@ section { padding-block: 88px; }
 .stats strong { font-family: var(--font-head); font-weight: 500; font-size: clamp(26px, 3vw, 36px); line-height: 1.1; color: var(--gold-deep); white-space: nowrap; }
 .stats span { font-size: 13px; color: var(--muted); }
 
+/* reviews */
+.reviews-bg { background: var(--cream); }
+.rating-row { display: grid; grid-template-columns: minmax(0, 1.3fr) repeat(2, minmax(0, 1fr)); background: var(--bg); border: 1px solid var(--line); margin-bottom: 24px; }
+.rating-row > div { padding: 24px 28px; display: grid; gap: 4px; align-content: center; }
+.rating-row > div + div { border-left: 1px solid var(--line); }
+.rating-main { grid-template-columns: auto 1fr; column-gap: 18px; align-items: center; }
+.rating-main .big { font-family: var(--font-head); font-size: 64px; line-height: 1; grid-row: span 2; }
+.rating-main .src { font-size: 15px; color: var(--muted); }
+.rating-row .other b { font-family: var(--font-head); font-weight: 500; font-size: 30px; line-height: 1.1; }
+.rating-row .other span { font-size: 14px; color: var(--muted); }
+.stars { display: inline-flex; gap: 2px; color: #f2b01e; }
+.stars svg { width: 20px; height: 20px; }
+@media (max-width: 760px) {
+  .rating-row { grid-template-columns: 1fr 1fr; }
+  .rating-main { grid-column: 1 / -1; border-bottom: 1px solid var(--line); }
+  .rating-row > div:nth-child(2) { border-left: 0; }
+}
+.quotes { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px; }
+@media (max-width: 860px) { .quotes { grid-template-columns: 1fr; } }
+.quote-card { background: var(--bg); border: 1px solid var(--line); padding: 28px 26px 24px; display: grid; gap: 16px; grid-template-rows: auto 1fr auto; position: relative; margin: 0; }
+.quote-card blockquote { margin: 0; font-family: var(--font-head); font-size: 23px; line-height: 1.35; }
+.quote-card figcaption { display: flex; align-items: center; gap: 12px; padding-top: 16px; border-top: 1px solid var(--line); font-size: 14px; }
+.avatar { width: 40px; height: 40px; border-radius: 50%; display: grid; place-items: center; color: #fff; font-weight: 600; font-size: 17px; flex: 0 0 auto; }
+.quote-card figcaption span { display: grid; }
+.quote-card figcaption small { color: var(--muted); font-size: 13px; }
+.review-actions { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; margin-top: 32px; }
+
 /* why */
 .why-bg { padding-top: 0; }
 .why { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 32px; text-align: center; }
@@ -420,8 +447,8 @@ section { padding-block: 88px; }
 
 <div class="marquee" aria-label="Announcements">
   <div class="marquee-track">
-    <span>Yuvraj Men's Wear</span><span>Since 2002</span><span>Open 11 AM – 9 PM</span><span>Sizes S to 5XL</span><span>Winter &amp; wedding collection in store</span><span>Shiv Thakur Lane, Burrabazar</span>
-    <span aria-hidden="true">Yuvraj Men's Wear</span><span aria-hidden="true">Since 2002</span><span aria-hidden="true">Open 11 AM – 9 PM</span><span aria-hidden="true">Sizes S to 5XL</span><span aria-hidden="true">Winter &amp; wedding collection in store</span><span aria-hidden="true">Shiv Thakur Lane, Burrabazar</span>
+    <span>Yuvraj Men's Wear</span><span>Since 2002</span><span>Open 11 AM – 9 PM</span><span>Sizes S to 5XL</span><span>Rated 4.8 ★ on Google</span><span>Winter &amp; wedding collection in store</span><span>Shiv Thakur Lane, Burrabazar</span>
+    <span aria-hidden="true">Yuvraj Men's Wear</span><span aria-hidden="true">Since 2002</span><span aria-hidden="true">Open 11 AM – 9 PM</span><span aria-hidden="true">Sizes S to 5XL</span><span aria-hidden="true">Rated 4.8 ★ on Google</span><span aria-hidden="true">Winter &amp; wedding collection in store</span><span aria-hidden="true">Shiv Thakur Lane, Burrabazar</span>
   </div>
 </div>
 
@@ -449,6 +476,7 @@ section { padding-block: 88px; }
         </li>
         <li><a href="#looks">Outfit Ideas</a></li>
         <li><a href="#about">About Us</a></li>
+        <li><a href="#reviews">Reviews</a></li>
         <li><a href="#visit">Visit Us</a></li>
         <li><a href="#contact">Contact</a></li>
       </ul>
@@ -478,6 +506,7 @@ section { padding-block: 88px; }
     <a class="sub" href="#sizes" data-close>Big sizes (up to 5XL)</a>
     <a href="#looks" data-close>Outfit Ideas</a>
     <a href="#about" data-close>About Us</a>
+    <a href="#reviews" data-close>Reviews</a>
     <a href="#visit" data-close>Visit Us</a>
     <a href="#contact" data-close>Contact</a>
   </div>
@@ -549,7 +578,7 @@ section { padding-block: 88px; }
       <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg><p><b>11 AM – 9 PM</b><span id="status-mini">Shop hours</span></p></div>
       <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 18h18M3 18l2.5-5M21 18l-2.5-5M7 18v-2.5M11 18v-3.5M15 18v-2.5M19 18v-3"/></svg><p><b>S to 5XL</b><span>All sizes in stock</span></p></div>
       <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 21s-7-7.5-7-12a7 7 0 0 1 14 0c0 4.5-7 12-7 12z"/><circle cx="12" cy="9" r="2.5"/></svg><p><b>Burrabazar</b><span>Shiv Thakur Lane</span></p></div>
-      <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 3l2.6 5.6 6.1.7-4.5 4.1 1.2 6L12 16.4 6.6 19.4l1.2-6L3.3 9.3l6.1-.7z"/></svg><p><b>Since 2002</b><span>20+ years</span></p></div>
+      <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 3l2.6 5.6 6.1.7-4.5 4.1 1.2 6L12 16.4 6.6 19.4l1.2-6L3.3 9.3l6.1-.7z"/></svg><p><b>4.8 ★ Google</b><span>83 reviews</span></p></div>
     </div>
   </div>
 
@@ -648,6 +677,30 @@ section { padding-block: 88px; }
     </div>
   </section>
 
+  <section class="reviews-bg" id="reviews">
+    <div class="wrap">
+      <div class="title">
+        <span class="orn"><svg class="sym" viewBox="0 0 100 100" aria-hidden="true"><path transform="rotate(-4 50 50)" d="M50 10V90M10 50H90M50 10L83 29M90 50L71 83M50 90L17 71M10 50L29 17" fill="none" stroke="currentColor" stroke-width="9" stroke-linecap="butt" stroke-linejoin="miter"/></svg></span>
+        <h2>What Our Customers Say</h2>
+        <p>Rated by customers on Google, Justdial and magicpin.</p>
+      </div>
+      <div class="rating-row">
+        <div class="rating-main"><span class="big">4.8</span><span class="stars" aria-label="5 out of 5 stars"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.5l2.6 5.4 5.9.8-4.3 4.1 1 5.9L10 14.9l-5.2 2.8 1-5.9L1.5 7.7l5.9-.8z" fill="currentColor"/></svg><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.5l2.6 5.4 5.9.8-4.3 4.1 1 5.9L10 14.9l-5.2 2.8 1-5.9L1.5 7.7l5.9-.8z" fill="currentColor"/></svg><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.5l2.6 5.4 5.9.8-4.3 4.1 1 5.9L10 14.9l-5.2 2.8 1-5.9L1.5 7.7l5.9-.8z" fill="currentColor"/></svg><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.5l2.6 5.4 5.9.8-4.3 4.1 1 5.9L10 14.9l-5.2 2.8 1-5.9L1.5 7.7l5.9-.8z" fill="currentColor"/></svg><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.5l2.6 5.4 5.9.8-4.3 4.1 1 5.9L10 14.9l-5.2 2.8 1-5.9L1.5 7.7l5.9-.8z" fill="currentColor"/></svg></span><span class="src">from 83 Google reviews</span></div>
+        <div class="other"><b>4.9 / 5</b><span>Justdial · 87 votes</span></div>
+        <div class="other"><b>4.9 / 5</b><span>magicpin · 2 votes</span></div>
+      </div>
+      <div class="quotes">
+        <figure class="quote-card"><span class="stars" aria-label="5 out of 5 stars"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.5l2.6 5.4 5.9.8-4.3 4.1 1 5.9L10 14.9l-5.2 2.8 1-5.9L1.5 7.7l5.9-.8z" fill="currentColor"/></svg><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.5l2.6 5.4 5.9.8-4.3 4.1 1 5.9L10 14.9l-5.2 2.8 1-5.9L1.5 7.7l5.9-.8z" fill="currentColor"/></svg><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.5l2.6 5.4 5.9.8-4.3 4.1 1 5.9L10 14.9l-5.2 2.8 1-5.9L1.5 7.7l5.9-.8z" fill="currentColor"/></svg><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.5l2.6 5.4 5.9.8-4.3 4.1 1 5.9L10 14.9l-5.2 2.8 1-5.9L1.5 7.7l5.9-.8z" fill="currentColor"/></svg><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.5l2.6 5.4 5.9.8-4.3 4.1 1 5.9L10 14.9l-5.2 2.8 1-5.9L1.5 7.7l5.9-.8z" fill="currentColor"/></svg></span><blockquote>Excellent collection of clothes with better service than online services.</blockquote><figcaption><span class="avatar" style="background:#5b3fa6">K</span><span>K.<small>Google review</small></span></figcaption></figure>
+        <figure class="quote-card"><span class="stars" aria-label="5 out of 5 stars"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.5l2.6 5.4 5.9.8-4.3 4.1 1 5.9L10 14.9l-5.2 2.8 1-5.9L1.5 7.7l5.9-.8z" fill="currentColor"/></svg><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.5l2.6 5.4 5.9.8-4.3 4.1 1 5.9L10 14.9l-5.2 2.8 1-5.9L1.5 7.7l5.9-.8z" fill="currentColor"/></svg><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.5l2.6 5.4 5.9.8-4.3 4.1 1 5.9L10 14.9l-5.2 2.8 1-5.9L1.5 7.7l5.9-.8z" fill="currentColor"/></svg><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.5l2.6 5.4 5.9.8-4.3 4.1 1 5.9L10 14.9l-5.2 2.8 1-5.9L1.5 7.7l5.9-.8z" fill="currentColor"/></svg><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.5l2.6 5.4 5.9.8-4.3 4.1 1 5.9L10 14.9l-5.2 2.8 1-5.9L1.5 7.7l5.9-.8z" fill="currentColor"/></svg></span><blockquote>Good price and good quality.</blockquote><figcaption><span class="avatar" style="background:#e8562a">S</span><span>S.<small>Google review</small></span></figcaption></figure>
+        <figure class="quote-card"><span class="stars" aria-label="5 out of 5 stars"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.5l2.6 5.4 5.9.8-4.3 4.1 1 5.9L10 14.9l-5.2 2.8 1-5.9L1.5 7.7l5.9-.8z" fill="currentColor"/></svg><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.5l2.6 5.4 5.9.8-4.3 4.1 1 5.9L10 14.9l-5.2 2.8 1-5.9L1.5 7.7l5.9-.8z" fill="currentColor"/></svg><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.5l2.6 5.4 5.9.8-4.3 4.1 1 5.9L10 14.9l-5.2 2.8 1-5.9L1.5 7.7l5.9-.8z" fill="currentColor"/></svg><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.5l2.6 5.4 5.9.8-4.3 4.1 1 5.9L10 14.9l-5.2 2.8 1-5.9L1.5 7.7l5.9-.8z" fill="currentColor"/></svg><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.5l2.6 5.4 5.9.8-4.3 4.1 1 5.9L10 14.9l-5.2 2.8 1-5.9L1.5 7.7l5.9-.8z" fill="currentColor"/></svg></span><blockquote>Very good behaviour and garments items.</blockquote><figcaption><span class="avatar" style="background:#b8401f">V</span><span>V.<small>Google review</small></span></figcaption></figure>
+      </div>
+      <div class="review-actions">
+        <a class="btn" href="https://share.google/QCK9qBCFQ7jnHPocM" target="_blank" rel="noopener">Read all reviews on Google</a>
+        <a class="btn btn-ghost" href="https://www.justdial.com/Kolkata/Yuvraj-Mens-Wear-Behind-Icici-Bank-Daccapatty-Burrabazar/033PF002384_BZDET" target="_blank" rel="noopener">See us on Justdial</a>
+      </div>
+    </div>
+  </section>
+
   <section class="why-bg" aria-label="Why shop with us">
     <div class="wrap">
       <div class="why">
@@ -742,7 +795,7 @@ section { padding-block: 88px; }
   <div class="bottom">
     <div class="wrap">
       <nav aria-label="Footer">
-        <a href="#about">About Us</a><a href="#collections">Collections</a><a href="#looks">Outfit Ideas</a><a href="#sizes">Sizes</a><a href="#visit">Visit Us</a><a href="#contact">Contact Us</a>
+        <a href="#about">About Us</a><a href="#reviews">Reviews</a><a href="#collections">Collections</a><a href="#looks">Outfit Ideas</a><a href="#sizes">Sizes</a><a href="#visit">Visit Us</a><a href="#contact">Contact Us</a>
       </nav>
       <div class="copy-line"><b>© 2026,</b> Yuvraj Men's Wear · Since 2002</div>
     </div>
