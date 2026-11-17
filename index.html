@@ -5,219 +5,289 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Yuvraj Mens Wear</title>
 <meta name="claude:viewport-fit-sides" content="cover">
-<meta name="description" content="Yuvraj Mens Wear, Shiv Thakur Lane, Daccapatty, Burrabazar, Kolkata. Ready-made formal, ethnic, winter, casual and sportswear for men, sizes S to 5XL. Open 11 AM to 9 PM. Run by Ravi Agarwal since 2002.">
+<meta name="description" content="Yuvraj Mens Wear, Shiv Thakur Lane, Daccapatty, Burrabazar, Kolkata. Ready-made formal, ethnic, winter, casual and sportswear for men, sizes S to 5XL. Run by Ravi Agarwal since 2002. Open 11 AM to 9 PM.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@400;500;600;700&family=Tiro+Devanagari+Hindi&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Spectral:ital,wght@0,400;0,500;1,400&family=Jost:wght@400;500;600&family=Tiro+Devanagari+Hindi&display=swap">
 <style>
-/* Layout: minimal fashion house. Sticky slim nav, big serif statements, one full-bleed storefront image, a tile grid of collections, a giant size band, and a two-column visit block. */
+/* Layout: an organised boutique. Black marquee strip, white sticky header with a gold logo and dropdown menu, a slideshow banner,
+   centred serif section titles, arch-topped collection cards, a bordered "About us" card with a round portrait, and a marigold-bordered footer.
+   Deliberately one warm light theme. */
 :root {
+  color-scheme: light;
   --bg: #ffffff;
-  --fg: #111111;
-  --muted: #6b6b6b;
-  --line: #e7e7e7;
-  --tile: #f4f4f2;
-  --accent: #d1105a;
-  --on-accent: #ffffff;
-  --garment: #ffffff;
-  --garment-line: #111111;
-  --inverse-bg: #111111;
-  --inverse-fg: #ffffff;
+  --cream: #f8f3ea;
+  --ink: #161616;
+  --muted: #6a6560;
+  --line: #e6e0d6;
+  --gold: #c9962b;
+  --gold-deep: #9c7015;
+  --black: #0d0d0d;
+  --on-black: #f5f1e8;
   --font-logo: "DM Serif Display", "Bookman Old Style", Georgia, serif;
-  --font-body: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-head: "Spectral", Georgia, "Times New Roman", serif;
+  --font-body: "Jost", system-ui, -apple-system, "Segoe UI", sans-serif;
   --font-hindi: "Tiro Devanagari Hindi", "Noto Sans Devanagari", serif;
 }
-@media (prefers-color-scheme: dark) {
-  :root:not([data-theme="light"]) {
-    --bg: #0e0e0e; --fg: #f2f2f2; --muted: #9a9a9a; --line: #262626; --tile: #181818;
-    --accent: #ff4f8e; --on-accent: #1a0010; --garment: #e9e9e9; --garment-line: #0e0e0e;
-    --inverse-bg: #f2f2f2; --inverse-fg: #0e0e0e;
-    color-scheme: dark;
-  }
-}
-:root[data-theme="dark"] {
-  --bg: #0e0e0e; --fg: #f2f2f2; --muted: #9a9a9a; --line: #262626; --tile: #181818;
-  --accent: #ff4f8e; --on-accent: #1a0010; --garment: #e9e9e9; --garment-line: #0e0e0e;
-  --inverse-bg: #f2f2f2; --inverse-fg: #0e0e0e;
-  color-scheme: dark;
-}
-
 * { box-sizing: border-box; }
-html { scroll-behavior: smooth; }
-body { background: var(--bg); color: var(--fg); font-family: var(--font-body); font-size: 16px; line-height: 1.6; }
+html { scroll-behavior: smooth; scroll-padding-top: 90px; }
+body { background: var(--bg); color: var(--ink); font-family: var(--font-body); font-size: 17px; line-height: 1.65; }
 .wrap { max-width: 1200px; margin: 0 auto; padding-left: max(20px, env(safe-area-inset-left, 0px)); padding-right: max(20px, env(safe-area-inset-right, 0px)); }
 h1, h2, h3 { margin: 0; font-weight: 400; text-wrap: balance; }
 p { margin: 0; }
 a { color: inherit; }
-a:focus-visible, button:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 4px; }
+a:focus-visible, button:focus-visible { outline: 2px solid var(--gold); outline-offset: 3px; border-radius: 4px; }
 img { display: block; max-width: 100%; }
 svg.g { display: block; overflow: visible; }
-.serif { font-family: var(--font-logo); }
-.kicker { font-size: 12px; font-weight: 600; letter-spacing: .18em; text-transform: uppercase; color: var(--muted); }
-.kicker b { color: var(--accent); font-weight: 600; }
+.sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
 
-/* buttons */
-.btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; padding: 14px 24px; font-weight: 600; font-size: 14px; letter-spacing: .02em; text-decoration: none; border: 1.5px solid var(--fg); border-radius: 0; white-space: nowrap; cursor: pointer; font-family: inherit; background: transparent; color: var(--fg); }
-.btn svg { width: 17px; height: 17px; }
-.btn-solid { background: var(--fg); color: var(--bg); }
-.btn-accent { background: var(--accent); border-color: var(--accent); color: var(--on-accent); }
+/* ---------- marquee ---------- */
+body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px); z-index: 60; background: var(--black); }
+.marquee { background: var(--black); color: var(--on-black); overflow: hidden; font-size: 13px; font-weight: 600; letter-spacing: .14em; text-transform: uppercase; }
+.marquee-track { display: flex; width: max-content; padding-block: 11px; }
+.marquee-track span { padding-inline: 34px; white-space: nowrap; }
+.marquee-track span::after { content: "✦"; color: var(--gold); margin-left: 68px; margin-right: -34px; }
 @media (prefers-reduced-motion: no-preference) {
-  .btn, .tile { transition: background-color .2s ease, color .2s ease, transform .25s ease; }
-  .btn:hover { background: var(--fg); color: var(--bg); }
-  .btn-solid:hover { background: var(--accent); border-color: var(--accent); color: var(--on-accent); }
-  .btn-accent:hover { background: var(--fg); border-color: var(--fg); color: var(--bg); }
-  .tile:hover .art { transform: translateY(-4px); }
-  .tile .art { transition: transform .3s ease; }
+  .marquee-track { animation: scroll 38s linear infinite; }
+  @keyframes scroll { to { transform: translateX(-50%); } }
 }
 
-/* logo */
-.logo { display: inline-flex; align-items: center; gap: .18em; text-decoration: none; line-height: 1; }
-.logo-word { font-family: var(--font-logo); }
-.logo .sym { width: .58em; height: .58em; color: var(--accent); }
+/* ---------- header ---------- */
+.header { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 50; background: var(--bg); box-shadow: 0 1px 0 var(--line), 0 6px 18px rgba(0,0,0,.04); }
+.header .wrap { display: flex; align-items: center; justify-content: space-between; gap: 20px; height: 76px; }
+.logo { display: inline-flex; align-items: center; gap: 7px; text-decoration: none; color: var(--gold); line-height: 1; }
+.logo-word { font-family: var(--font-logo); font-size: 34px; }
+.logo .sym { width: 20px; height: 20px; color: var(--gold); }
+.logo-sub { display: block; white-space: nowrap; font-family: var(--font-body); font-size: 9.5px; font-weight: 600; letter-spacing: .34em; color: var(--ink); margin-top: 3px; }
+.logo-stack { display: grid; }
+.menu { display: flex; align-items: center; gap: 4px; list-style: none; margin: 0; padding: 0; }
+.menu > li { position: relative; }
+.menu a, .menu button { display: inline-flex; align-items: center; gap: 6px; padding: 10px 14px; font: 500 16px var(--font-body); text-decoration: none; color: var(--ink); background: none; border: 0; cursor: pointer; }
+.menu a:hover, .menu button:hover { color: var(--gold-deep); }
+.menu .chev { width: 10px; height: 10px; transition: transform .2s; }
+.dropdown { position: absolute; top: 100%; left: 0; min-width: 240px; background: var(--bg); border: 1px solid var(--line); box-shadow: 0 14px 30px rgba(0,0,0,.08); padding: 8px 0; list-style: none; margin: 0; display: none; }
+.dropdown a { display: flex; justify-content: space-between; width: 100%; padding: 9px 20px; font-size: 15px; }
+.dropdown a small { color: var(--muted); font-size: 13px; }
+.has-drop:hover .dropdown, .has-drop:focus-within .dropdown, .has-drop.open .dropdown { display: block; }
+.has-drop:hover .chev, .has-drop.open .chev { transform: rotate(180deg); }
+.icons { display: flex; align-items: center; gap: 6px; }
+.icon-btn { width: 42px; height: 42px; display: grid; place-items: center; border-radius: 50%; text-decoration: none; color: var(--ink); background: none; border: 0; cursor: pointer; }
+.icon-btn:hover { background: var(--cream); }
+.icon-btn svg { width: 22px; height: 22px; }
+.burger { display: none; }
+@media (max-width: 1000px) {
+  .nav { display: none; }
+  .burger { display: grid; }
+  .logo-word { font-size: 30px; }
+}
+/* mobile drawer */
+.drawer { position: fixed; inset: 0; z-index: 70; display: none; }
+.drawer.open { display: block; }
+.drawer-bg { position: absolute; inset: 0; background: rgba(0,0,0,.4); }
+.drawer-panel { position: absolute; top: 0; bottom: 0; left: 0; width: min(330px, 86vw); background: var(--bg); padding: calc(20px + env(safe-area-inset-top, 0px)) 24px calc(24px + env(safe-area-inset-bottom, 0px)) max(24px, env(safe-area-inset-left, 0px)); overflow-y: auto; display: grid; align-content: start; gap: 6px; }
+.drawer-head { display: flex; justify-content: space-between; align-items: center; margin-bottom: 14px; }
+.drawer a { text-decoration: none; padding: 10px 0; border-bottom: 1px solid var(--line); font-size: 17px; }
+.drawer .sub { padding-left: 16px; font-size: 15px; color: var(--muted); }
+.drawer .lbl { margin-top: 10px; font-size: 12px; font-weight: 600; letter-spacing: .16em; text-transform: uppercase; color: var(--gold-deep); }
 
-/* ---------- nav ---------- */
-body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px); z-index: 30; background: var(--bg); }
-.nav { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 20; background: color-mix(in srgb, var(--bg) 92%, transparent); backdrop-filter: blur(8px); border-bottom: 1px solid var(--line); }
-.nav .wrap { display: flex; align-items: center; justify-content: space-between; gap: 16px; height: 64px; }
-.nav .logo { font-size: 28px; }
-.nav-sub { font-size: 10px; font-weight: 600; letter-spacing: .26em; margin-left: 10px; color: var(--muted); align-self: center; }
-.nav-links { display: flex; align-items: center; gap: 28px; font-size: 14px; font-weight: 500; }
-.nav-links a { text-decoration: none; }
-.nav-links a:not(.btn):hover { color: var(--accent); }
-.nav .btn { padding: 9px 16px; font-size: 13px; }
-@media (max-width: 760px) { .nav-links a:not(.btn), .nav-sub { display: none; } }
+/* ---------- buttons ---------- */
+.btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; padding: 13px 26px; font: 600 14px var(--font-body); letter-spacing: .1em; text-transform: uppercase; text-decoration: none; border: 1.5px solid var(--black); background: var(--black); color: var(--on-black); cursor: pointer; white-space: nowrap; }
+.btn svg { width: 17px; height: 17px; }
+.btn-ghost { background: transparent; color: var(--ink); }
+.btn-light { background: var(--bg); border-color: var(--bg); color: var(--ink); }
+.btn-gold { background: var(--gold); border-color: var(--gold); color: #1b1407; }
+@media (prefers-reduced-motion: no-preference) {
+  .btn { transition: background-color .2s, color .2s, border-color .2s; }
+  .btn:hover { background: var(--gold); border-color: var(--gold); color: #1b1407; }
+  .card-c .arch .art { transition: transform .35s ease; }
+  .card-c:hover .arch .art { transform: translateY(-6px); }
+}
 
-/* ---------- hero ---------- */
-.hero { padding-block: 56px 0; }
-.hero-grid { display: grid; grid-template-columns: minmax(0, 1.6fr) minmax(0, 1fr); gap: 40px; align-items: end; }
-@media (max-width: 860px) { .hero-grid { grid-template-columns: 1fr; gap: 28px; } }
-.hero h1 { font-family: var(--font-logo); font-size: clamp(48px, 8.4vw, 116px); line-height: .98; letter-spacing: -0.01em; }
-.hero h1 em { color: var(--accent); }
-.hero-side { display: grid; gap: 18px; padding-bottom: 10px; }
-.hero-side p { color: var(--muted); font-size: 17px; max-width: 36ch; }
-.hero-side .hindi { font-family: var(--font-hindi); color: var(--fg); font-size: 18px; }
-.hero-actions { display: flex; flex-wrap: wrap; gap: 10px; }
-.hero-img { margin: 44px 0 0; }
-.hero-img img { width: 100%; height: auto; aspect-ratio: 1672 / 941; object-fit: cover; }
-.facts { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); border-bottom: 1px solid var(--line); }
-.facts div { padding: 22px 20px 22px 0; display: grid; gap: 2px; }
-.facts div + div { padding-left: 20px; border-left: 1px solid var(--line); }
-.facts dt { font-size: 12px; font-weight: 600; letter-spacing: .14em; text-transform: uppercase; color: var(--muted); }
-.facts dd { margin: 0; font-size: 16px; font-weight: 500; }
-.facts .open { color: var(--accent); }
+/* ---------- slider ---------- */
+.slider { position: relative; background: var(--cream); overflow: hidden; }
+.slides { display: grid; }
+.slide { grid-area: 1 / 1; opacity: 0; visibility: hidden; transition: opacity .7s ease, visibility .7s; }
+.slide.active { opacity: 1; visibility: visible; }
+.slide-1 { position: relative; min-height: clamp(380px, 62vw, 640px); display: grid; align-items: end; color: #fff; }
+.slide-1 img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.slide-1::after { content: ""; position: absolute; inset: 0; background: linear-gradient(to top, rgba(0,0,0,.78) 0%, rgba(0,0,0,.35) 40%, rgba(0,0,0,0) 65%), linear-gradient(to right, rgba(0,0,0,.55) 0%, rgba(0,0,0,0) 55%); }
+.slide-1 .wrap { position: relative; z-index: 1; padding-block: 0 64px; width: 100%; }
+.slide-text { display: grid; gap: 14px; max-width: 640px; }
+.slide-text .eyebrow { font-size: 13px; font-weight: 600; letter-spacing: .2em; text-transform: uppercase; color: var(--gold-deep); }
+.slide-1 .slide-text .eyebrow { color: #f3d38a; }
+@media (min-width: 761px) { .slide-1 .wrap { padding-left: max(90px, env(safe-area-inset-left, 0px)); } }
+.slide-text h1, .slide-text h2 { font-family: var(--font-head); font-size: clamp(36px, 5.4vw, 66px); line-height: 1.05; }
+.slide-text p { font-size: 18px; max-width: 44ch; opacity: .92; }
+.slide-text .actions { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 6px; }
+.slide-split { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); min-height: clamp(380px, 46vw, 640px); }
+.slide-split .txt { display: grid; align-content: center; padding: 48px max(20px, 6vw); }
+.slide-split .pic { position: relative; min-height: 320px; }
+.slide-split .pic img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 50% 20%; }
+.slide-split .art-pic { display: flex; align-items: flex-end; justify-content: center; gap: 0; padding: 40px 20px 0; background: #efe5d3; }
+.slide-split .art-pic svg { width: clamp(90px, 13vw, 170px); height: auto; filter: drop-shadow(0 10px 14px rgba(0,0,0,.15)); }
+.slide-split .art-pic svg + svg { margin-left: -30px; }
 @media (max-width: 760px) {
-  .facts { grid-template-columns: 1fr 1fr; }
-  .facts div:nth-child(3) { padding-left: 0; border-left: 0; }
-  .facts div:nth-child(n+3) { border-top: 1px solid var(--line); }
+  .slide-split { grid-template-columns: 1fr; }
+  .slide-split .txt { padding: 36px 20px 28px; }
+  .slide-split .pic { min-height: 300px; order: -1; }
+  .slide-1 { display: block; min-height: 0; background: var(--black); }
+  .slide-1 img { position: static; aspect-ratio: 1672 / 941; height: auto; }
+  .slide-1::after { display: none; }
+  .slide-1 .wrap { padding-block: 28px 56px; }
+  .card-c .arch { max-width: 320px; width: 100%; margin-inline: auto; }
 }
+.dots { position: absolute; left: 0; right: 0; bottom: 18px; display: flex; justify-content: center; gap: 10px; z-index: 3; }
+.dot { width: 10px; height: 10px; border-radius: 50%; border: 1.5px solid #fff; background: rgba(255,255,255,.35); padding: 0; cursor: pointer; box-shadow: 0 0 0 1px rgba(0,0,0,.25); }
+.dot[aria-current="true"] { background: #fff; }
+.arrow { position: absolute; top: 50%; transform: translateY(-50%); z-index: 3; width: 44px; height: 44px; border-radius: 50%; border: 0; background: rgba(255,255,255,.88); display: grid; place-items: center; cursor: pointer; }
+.arrow svg { width: 18px; height: 18px; }
+.arrow.prev { left: max(14px, env(safe-area-inset-left, 0px)); }
+.arrow.next { right: max(14px, env(safe-area-inset-right, 0px)); }
+@media (max-width: 760px) { .arrow { display: none; } }
 
-section { padding-block: 96px; }
-@media (max-width: 760px) { section { padding-block: 64px; } }
-.sec-head { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 16px 40px; align-items: end; margin-bottom: 40px; }
-.sec-head h2 { font-family: var(--font-logo); font-size: clamp(36px, 5.4vw, 68px); line-height: 1.02; }
-.sec-head p { color: var(--muted); max-width: 34ch; }
-@media (max-width: 760px) { .sec-head { grid-template-columns: 1fr; } }
+/* ---------- info strip ---------- */
+.strip { border-bottom: 1px solid var(--line); }
+.strip .wrap { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); }
+.strip div { padding: 22px 18px; display: flex; align-items: center; gap: 12px; }
+.strip div + div { border-left: 1px solid var(--line); }
+.strip svg { width: 28px; height: 28px; color: var(--gold); flex: 0 0 auto; }
+.strip b { display: block; font-weight: 600; font-size: 15px; }
+.strip span { font-size: 14px; color: var(--muted); }
+@media (max-width: 860px) {
+  .strip .wrap { grid-template-columns: 1fr 1fr; }
+  .strip div:nth-child(3) { border-left: 0; }
+  .strip div:nth-child(n+3) { border-top: 1px solid var(--line); }
+}
+@media (max-width: 420px) { .strip div { padding: 16px 10px; } .strip svg { display: none; } }
 
-/* ---------- collections ---------- */
-.tiles { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }
-@media (max-width: 900px) { .tiles { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
-@media (max-width: 520px) { .tiles { grid-template-columns: 1fr; } }
-.tile { background: var(--tile); display: grid; grid-template-rows: 240px auto; }
-.tile .art { display: flex; align-items: flex-end; justify-content: center; padding: 28px 20px 0; }
-.tile .art svg { width: 108px; height: auto; max-height: 200px; }
-.tile .art svg + svg { margin-left: -22px; }
-.tile .body { padding: 20px 22px 24px; display: grid; gap: 6px; border-top: 1px solid var(--line); background: var(--bg); margin: 0 1px 1px; }
-.tile h3 { font-family: var(--font-logo); font-size: 30px; line-height: 1.1; }
-.tile .for { font-size: 13px; color: var(--accent); font-weight: 600; letter-spacing: .06em; text-transform: uppercase; }
-.tile .items { font-size: 15px; color: var(--muted); }
+/* ---------- sections ---------- */
+section { padding-block: 88px; }
+@media (max-width: 760px) { section { padding-block: 60px; } }
+.title { text-align: center; display: grid; gap: 10px; justify-items: center; margin-bottom: 48px; }
+.title h2 { font-family: var(--font-head); font-size: clamp(34px, 4.6vw, 52px); line-height: 1.1; }
+.title p { color: var(--muted); max-width: 56ch; }
+.title .orn { display: flex; align-items: center; gap: 12px; color: var(--gold); }
+.title .orn::before, .title .orn::after { content: ""; width: 44px; height: 1px; background: var(--gold); }
+.title .orn svg { width: 14px; height: 14px; }
 
-/* ---------- sizes band ---------- */
-.sizes { background: var(--inverse-bg); color: var(--inverse-fg); padding-block: 80px; overflow: hidden; }
-.sizes .kicker { color: color-mix(in srgb, var(--inverse-fg) 60%, transparent); }
-.size-line { display: flex; align-items: baseline; flex-wrap: wrap; gap: 4px 22px; margin-block: 22px 26px; font-family: var(--font-logo); line-height: .9; }
-.size-line span:last-child { color: var(--accent); }
-.sizes p { max-width: 52ch; color: color-mix(in srgb, var(--inverse-fg) 72%, transparent); font-size: 17px; }
+/* collections */
+.collections { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 36px 28px; }
+@media (max-width: 900px) { .collections { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 28px 18px; } }
+@media (max-width: 480px) { .collections { grid-template-columns: 1fr; } }
+.card-c { display: grid; gap: 16px; text-align: center; scroll-margin-top: 100px; }
+.arch { background: var(--cream); border-radius: 999px 999px 0 0; aspect-ratio: 4 / 3.4; display: flex; align-items: flex-end; justify-content: center; overflow: hidden; border: 1px solid var(--line); }
+.arch .art { display: flex; align-items: flex-end; justify-content: center; padding-bottom: 0; }
+.arch .art svg { width: clamp(96px, 13vw, 150px); height: auto; filter: drop-shadow(0 10px 10px rgba(0,0,0,.12)); }
+.arch .art svg + svg { margin-left: -26px; }
+.card-c h3 { font-family: var(--font-head); font-size: 28px; line-height: 1.15; }
+.card-c .for { font-size: 12px; font-weight: 600; letter-spacing: .16em; text-transform: uppercase; color: var(--gold-deep); }
+.card-c .items { font-size: 15px; color: var(--muted); max-width: 32ch; margin-inline: auto; }
 
-/* ---------- looks ---------- */
-.looks { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); border-top: 1px solid var(--fg); }
-@media (max-width: 900px) { .looks { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+/* sizes band */
+.sizes { background: var(--black); color: var(--on-black); text-align: center; padding-block: 72px; }
+.sizes .lbl { font-size: 13px; font-weight: 600; letter-spacing: .2em; text-transform: uppercase; color: var(--gold); }
+.size-line { display: flex; justify-content: center; align-items: baseline; flex-wrap: wrap; gap: 4px 20px; margin-block: 18px 20px; font-family: var(--font-head); line-height: 1; }
+.size-line span:last-child { color: var(--gold); }
+.sizes p { color: color-mix(in srgb, var(--on-black) 72%, transparent); max-width: 50ch; margin-inline: auto; }
+
+/* looks */
+.looks-bg { background: var(--cream); }
+.looks { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 18px; }
+@media (max-width: 960px) { .looks { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
 @media (max-width: 520px) { .looks { grid-template-columns: 1fr; } }
-.look { padding: 26px 24px 30px 0; display: grid; gap: 16px; align-content: start; border-bottom: 1px solid var(--line); }
-@media (min-width: 521px) { .look:not(:nth-child(4n+1)) { padding-left: 24px; border-left: 1px solid var(--line); } }
-@media (min-width: 521px) and (max-width: 900px) { .look:nth-child(3) { padding-left: 0; border-left: 0; } }
-.look h3 { font-family: var(--font-logo); font-size: 28px; line-height: 1.1; }
-.look small { display: block; font-size: 13px; color: var(--muted); margin-top: 4px; font-family: var(--font-body); }
-.look ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 10px; }
-.look li { display: grid; grid-template-columns: 22px 1fr; gap: 12px; align-items: center; font-size: 15px; }
-.look li b { width: 22px; height: 22px; border-radius: 50%; display: block; box-shadow: inset 0 0 0 1px rgba(0,0,0,.12); }
+.look { background: var(--bg); border: 1px solid var(--line); padding: 26px 24px 28px; display: grid; gap: 16px; align-content: start; }
+.look h3 { font-family: var(--font-head); font-size: 26px; line-height: 1.15; }
+.look small { display: block; font-family: var(--font-body); font-size: 13px; color: var(--muted); margin-top: 4px; }
+.look ul { list-style: none; margin: 0; padding: 16px 0 0; border-top: 1px solid var(--line); display: grid; gap: 10px; }
+.look li { display: grid; grid-template-columns: 20px 1fr; gap: 12px; align-items: center; font-size: 15px; }
+.look li b { width: 20px; height: 20px; border-radius: 50%; display: block; box-shadow: inset 0 0 0 1px rgba(0,0,0,.14); }
 
-/* ---------- promise ---------- */
-.promise { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 40px; }
-@media (max-width: 760px) { .promise { grid-template-columns: 1fr; gap: 28px; } }
-.promise div { display: grid; gap: 10px; align-content: start; }
-.promise h3 { font-family: var(--font-logo); font-size: 30px; line-height: 1.1; }
-.promise p { color: var(--muted); }
-.quote { margin-top: 64px; padding-top: 40px; border-top: 1px solid var(--line); font-family: var(--font-logo); font-size: clamp(28px, 4vw, 48px); line-height: 1.15; max-width: 24ch; }
-.quote em { color: var(--accent); }
-
-/* ---------- about ---------- */
-.about-band { background: var(--tile); }
-.about { display: grid; grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr); gap: 64px; align-items: center; }
-@media (max-width: 860px) { .about { grid-template-columns: 1fr; gap: 36px; } }
-.owner { margin: 0; display: grid; gap: 12px; max-width: 420px; }
-.owner img { width: 100%; height: auto; aspect-ratio: 3 / 5; object-fit: cover; }
-.owner figcaption { font-size: 13px; color: var(--muted); }
-.owner figcaption b { color: var(--fg); font-weight: 600; }
-.about h2 { font-family: var(--font-logo); font-size: clamp(48px, 8vw, 104px); line-height: .95; margin-block: 14px 28px; }
-.about h2 em { color: var(--accent); }
-.about-text { display: grid; gap: 16px; font-size: 18px; max-width: 54ch; }
-.about-text p:not(:first-child) { color: var(--muted); font-size: 16px; }
-.stats { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); margin-top: 36px; border-top: 1px solid var(--fg); }
-.stats div { padding: 18px 16px 0 0; display: grid; gap: 4px; }
-.stats div + div { padding-left: 16px; border-left: 1px solid var(--line); }
-.stats strong { font-family: var(--font-logo); font-weight: 400; font-size: clamp(30px, 4vw, 44px); line-height: 1; }
+/* about card */
+.about-card { border: 1px solid var(--line); box-shadow: 0 10px 34px rgba(0,0,0,.06); padding: clamp(28px, 5vw, 56px); display: grid; grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.3fr); gap: clamp(28px, 5vw, 72px); align-items: center; }
+@media (max-width: 820px) { .about-card { grid-template-columns: 1fr; text-align: center; } }
+.round { margin: 0; display: grid; gap: 14px; justify-items: center; }
+.round img { width: min(100%, 380px); height: auto; aspect-ratio: 1; border-radius: 50%; object-fit: cover; border: 6px solid var(--cream); box-shadow: 0 0 0 1px var(--line); }
+.round figcaption { font-size: 14px; color: var(--muted); }
+.round figcaption b { color: var(--ink); font-weight: 600; }
+.about-txt { display: grid; gap: 16px; }
+.about-txt h3 { font-family: var(--font-head); font-size: clamp(30px, 3.4vw, 40px); line-height: 1.1; }
+.about-txt h3 em { color: var(--gold-deep); }
+.about-txt p { color: var(--muted); }
+.about-txt p.lead { color: var(--ink); font-size: 19px; }
+.stats { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); border-top: 1px solid var(--line); margin-top: 10px; }
+.stats div { padding: 18px 10px 0; display: grid; gap: 2px; text-align: center; }
+.stats div + div { border-left: 1px solid var(--line); }
+.stats strong { font-family: var(--font-head); font-weight: 500; font-size: clamp(26px, 3vw, 36px); line-height: 1.1; color: var(--gold-deep); white-space: nowrap; }
 .stats span { font-size: 13px; color: var(--muted); }
-.stats strong { white-space: nowrap; }
-@media (max-width: 520px) { .stats strong { font-size: 26px; } .owner { max-width: 300px; } }
 
-/* ---------- visit ---------- */
-.visit-band { border-top: 1px solid var(--line); }
-.visit { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr); gap: 56px; }
-@media (max-width: 860px) { .visit { grid-template-columns: 1fr; gap: 44px; } }
-.visit h2 { font-family: var(--font-logo); font-size: clamp(40px, 6vw, 76px); line-height: 1; margin-block: 14px 24px; }
-.addr { font-size: 22px; line-height: 1.4; }
-.addr span { color: var(--muted); }
-.steps { list-style: none; padding: 0; margin: 28px 0 32px; display: grid; gap: 0; counter-reset: s; border-top: 1px solid var(--line); }
-.steps li { counter-increment: s; display: grid; grid-template-columns: 40px 1fr; padding-block: 14px; border-bottom: 1px solid var(--line); font-size: 15px; }
-.steps li::before { content: counter(s, decimal-leading-zero); font-weight: 600; color: var(--accent); font-variant-numeric: tabular-nums; }
-.links { display: flex; flex-wrap: wrap; gap: 10px; }
-.contact { display: grid; gap: 30px; align-content: start; }
-.c-row { display: grid; gap: 8px; }
-.c-label { font-size: 12px; font-weight: 600; letter-spacing: .14em; text-transform: uppercase; color: var(--muted); }
-.phone { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 14px; padding-block: 6px; }
-.phone .num { font-family: var(--font-logo); font-size: 34px; line-height: 1; text-decoration: none; font-variant-numeric: tabular-nums; }
-.tag { font-size: 11px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--accent); }
-.mini { display: inline-flex; align-items: center; gap: 6px; font-size: 13px; font-weight: 600; text-decoration: none; padding: 6px 12px; border: 1px solid var(--line); background: transparent; color: var(--fg); cursor: pointer; font-family: inherit; }
+/* why */
+.why-bg { padding-top: 0; }
+.why { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 32px; text-align: center; }
+@media (max-width: 760px) { .why { grid-template-columns: 1fr; } }
+.why div { display: grid; gap: 10px; justify-items: center; }
+.why .ic { width: 64px; height: 64px; border-radius: 50%; background: var(--cream); display: grid; place-items: center; color: var(--gold-deep); }
+.why .ic svg { width: 28px; height: 28px; }
+.why h3 { font-family: var(--font-head); font-size: 24px; }
+.why p { color: var(--muted); font-size: 15px; max-width: 32ch; }
+
+/* visit */
+.visit-bg { background: var(--cream); }
+.visit-card { background: var(--bg); border: 1px solid var(--line); box-shadow: 0 10px 34px rgba(0,0,0,.05); display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) minmax(0, 0.8fr); }
+@media (max-width: 960px) { .visit-card { grid-template-columns: 1fr 1fr; } .visit-card .shop { grid-column: 1 / -1; border-left: 0; border-top: 1px solid var(--line); } }
+@media (max-width: 640px) { .visit-card { grid-template-columns: 1fr; } .visit-card > div + div { border-left: 0; border-top: 1px solid var(--line); } }
+.visit-card > div { padding: clamp(24px, 3.5vw, 40px); display: grid; gap: 22px; align-content: start; min-width: 0; }
+.visit-card > div + div { border-left: 1px solid var(--line); }
+.v-lbl { font-size: 12px; font-weight: 600; letter-spacing: .16em; text-transform: uppercase; color: var(--gold-deep); }
+.v-row { display: grid; gap: 6px; }
+.num-row { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 12px; }
+.num { font-family: var(--font-head); font-size: 30px; line-height: 1.1; text-decoration: none; font-variant-numeric: tabular-nums; }
+.tag { font-size: 11px; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; padding: 3px 9px; background: var(--cream); color: var(--gold-deep); }
+.mini { display: inline-flex; align-items: center; gap: 6px; font: 500 13px var(--font-body); text-decoration: none; padding: 6px 12px; border: 1px solid var(--line); background: var(--bg); color: var(--ink); cursor: pointer; }
 .mini svg { width: 15px; height: 15px; color: #1faa52; }
-.hours { display: flex; flex-wrap: wrap; align-items: baseline; gap: 6px 14px; }
-.hours strong { font-family: var(--font-logo); font-weight: 400; font-size: 34px; line-height: 1; }
-.status { font-size: 13px; font-weight: 600; }
+.hours { font-family: var(--font-head); font-size: 30px; line-height: 1.1; }
+.status { font-size: 14px; font-weight: 600; }
 .status.is-open { color: #1a8f47; }
 .status.is-closed { color: var(--muted); }
-.email { font-size: 17px; overflow-wrap: anywhere; }
-.sign { display: grid; grid-template-columns: 96px 1fr; gap: 16px; align-items: center; padding-top: 24px; border-top: 1px solid var(--line); }
-.sign img { width: 96px; height: auto; aspect-ratio: 177 / 222; object-fit: cover; }
-.sign p { font-size: 14px; color: var(--muted); }
+.addr { font-size: 19px; line-height: 1.45; }
+.steps { list-style: none; margin: 0; padding: 0; display: grid; gap: 10px; counter-reset: s; }
+.steps li { counter-increment: s; display: grid; grid-template-columns: 28px 1fr; gap: 8px; font-size: 15px; }
+.steps li::before { content: counter(s); width: 24px; height: 24px; border-radius: 50%; background: var(--black); color: var(--on-black); font-size: 12px; font-weight: 600; display: grid; place-items: center; margin-top: 2px; }
+.links { display: flex; flex-wrap: wrap; gap: 8px; }
+.links .btn { padding: 11px 18px; font-size: 13px; }
+.shop figure { margin: 0; display: grid; gap: 12px; }
+.shop img { width: 100%; max-width: 280px; height: auto; aspect-ratio: 177 / 222; object-fit: cover; }
+.shop figcaption { font-size: 14px; color: var(--muted); }
+.email { overflow-wrap: anywhere; }
 
 /* ---------- footer ---------- */
-footer { background: var(--inverse-bg); color: var(--inverse-fg); }
-footer .wrap { padding-block: 48px 40px; display: grid; gap: 28px; }
-.f-top { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-end; gap: 20px; }
-footer .logo { font-size: clamp(44px, 8vw, 88px); }
-.f-sub { font-size: 12px; font-weight: 600; letter-spacing: .3em; margin-top: 10px; color: color-mix(in srgb, var(--inverse-fg) 65%, transparent); }
-.f-info { display: grid; gap: 4px; font-size: 14px; text-align: right; color: color-mix(in srgb, var(--inverse-fg) 75%, transparent); }
-@media (max-width: 600px) { .f-info { text-align: left; } }
-.f-bottom { border-top: 1px solid color-mix(in srgb, var(--inverse-fg) 18%, transparent); padding-top: 18px; font-size: 13px; color: color-mix(in srgb, var(--inverse-fg) 55%, transparent); }
+.foot { display: grid; grid-template-columns: 110px minmax(0, 1fr) 110px; border-top: 1px solid var(--line); }
+.marigold { background-color: #fffaf0; }
+.marigold svg { width: 100%; height: 100%; display: block; }
+@media (max-width: 760px) { .foot { grid-template-columns: 0 minmax(0, 1fr) 0; } .marigold { display: none; } }
+.foot-mid { padding: 64px 24px 48px; display: grid; gap: 34px; justify-items: center; }
+.foot-logo { display: grid; justify-items: center; gap: 4px; }
+.foot-logo .logo-word { font-size: 46px; }
+.foot-cols { display: grid; grid-template-columns: minmax(0, 1fr) 1px minmax(0, 1fr); gap: 36px; max-width: 820px; width: 100%; }
+.foot-cols .bar { background: var(--line); }
+.foot-cols .l { text-align: right; font-size: 15px; color: var(--muted); }
+.foot-cols .r { font-size: 15px; display: grid; gap: 6px; align-content: start; }
+.foot-cols .r .muted { color: var(--muted); }
+@media (max-width: 640px) { .foot-cols { grid-template-columns: 1fr; gap: 20px; text-align: center; } .foot-cols .l { text-align: center; } .foot-cols .bar { display: none; } }
+.socials { display: flex; gap: 12px; }
+.socials a { width: 42px; height: 42px; border-radius: 50%; background: var(--black); color: var(--on-black); display: grid; place-items: center; }
+.socials svg { width: 20px; height: 20px; }
+.bottom { background: var(--black); color: var(--on-black); }
+.bottom .wrap { padding-block: 22px calc(18px + env(safe-area-inset-bottom, 0px)); display: grid; gap: 16px; justify-items: center; text-align: center; }
+.bottom nav { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px 26px; font-size: 13px; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; }
+.bottom nav a { text-decoration: none; }
+.bottom nav a:hover { color: var(--gold); }
+.copy-line { border-top: 1px solid rgba(255,255,255,.14); padding-top: 14px; width: 100%; font-size: 15px; }
+.copy-line b { color: var(--gold); font-weight: 500; }
+
+/* back to top */
+.top-btn[hidden] { display: none; }
+.top-btn { position: fixed; right: max(18px, calc(env(safe-area-inset-right, 0px) + 12px)); bottom: max(18px, calc(env(safe-area-inset-bottom, 0px) + 12px)); z-index: 40; width: 54px; height: 54px; border-radius: 50%; background: var(--black); color: var(--on-black); display: grid; place-items: center; text-decoration: none; box-shadow: 0 6px 18px rgba(0,0,0,.25); }
+.top-btn svg { width: 20px; height: 20px; }
 </style>
 <style>:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0}[hidden]{display:none!important}</style>
 </head>
@@ -304,228 +374,307 @@ footer .logo { font-size: clamp(44px, 8vw, 88px); }
       <path d="M8 60l-2 26M112 60l2 26" style="stroke:#f4efe3" stroke-width="3"/>
       <path d="M56 16v14M64 16v14" style="stroke:#f4efe3" stroke-width="2"/>
     </symbol>
-  </defs>
+  <pattern id="garland" width="110" height="160" patternUnits="userSpaceOnUse"><path d="M0 0c6-10 20-12 30-4-8 10-22 12-30 4z" fill="#4f8a3a" transform="translate(62 30) rotate(-30)"/><path d="M0 0l26-2" stroke="#2f5d22" stroke-width="1" transform="translate(62 30) rotate(-30)"/><path d="M0 0c6-10 20-12 30-4-8 10-22 12-30 4z" fill="#4f8a3a" transform="translate(10 70) rotate(40)"/><path d="M0 0l26-2" stroke="#2f5d22" stroke-width="1" transform="translate(10 70) rotate(40)"/><circle cx="56.0" cy="40.0" r="12.6" fill="#f08a0c"/><circle cx="54.2" cy="47.8" r="12.6" fill="#f08a0c"/><circle cx="49.2" cy="54.1" r="12.6" fill="#f08a0c"/><circle cx="42.0" cy="57.5" r="12.6" fill="#f08a0c"/><circle cx="34.0" cy="57.5" r="12.6" fill="#f08a0c"/><circle cx="26.8" cy="54.1" r="12.6" fill="#f08a0c"/><circle cx="21.8" cy="47.8" r="12.6" fill="#f08a0c"/><circle cx="20.0" cy="40.0" r="12.6" fill="#f08a0c"/><circle cx="21.8" cy="32.2" r="12.6" fill="#f08a0c"/><circle cx="26.8" cy="25.9" r="12.6" fill="#f08a0c"/><circle cx="34.0" cy="22.5" r="12.6" fill="#f08a0c"/><circle cx="42.0" cy="22.5" r="12.6" fill="#f08a0c"/><circle cx="49.2" cy="25.9" r="12.6" fill="#f08a0c"/><circle cx="54.2" cy="32.2" r="12.6" fill="#f08a0c"/><circle cx="46.6" cy="42.7" r="9.0" fill="#f7b52c"/><circle cx="42.9" cy="47.6" r="9.0" fill="#f7b52c"/><circle cx="36.9" cy="48.9" r="9.0" fill="#f7b52c"/><circle cx="31.4" cy="46.1" r="9.0" fill="#f7b52c"/><circle cx="29.0" cy="40.4" r="9.0" fill="#f7b52c"/><circle cx="30.8" cy="34.6" r="9.0" fill="#f7b52c"/><circle cx="36.0" cy="31.2" r="9.0" fill="#f7b52c"/><circle cx="42.1" cy="32.0" r="9.0" fill="#f7b52c"/><circle cx="46.3" cy="36.5" r="9.0" fill="#f7b52c"/><circle cx="38" cy="40" r="5.4" fill="#b24c06"/><path d="M0 0c6-10 20-12 30-4-8 10-22 12-30 4z" fill="#4f8a3a" transform="translate(86 118) rotate(200)"/><path d="M0 0l26-2" stroke="#2f5d22" stroke-width="1" transform="translate(86 118) rotate(200)"/><path d="M0 0c6-10 20-12 30-4-8 10-22 12-30 4z" fill="#5f9a44" transform="translate(40 140) rotate(-20)"/><path d="M0 0l26-2" stroke="#2f5d22" stroke-width="1" transform="translate(40 140) rotate(-20)"/><circle cx="92.4" cy="112.0" r="10.1" fill="#f6b21a"/><circle cx="91.0" cy="118.2" r="10.1" fill="#f6b21a"/><circle cx="87.0" cy="123.3" r="10.1" fill="#f6b21a"/><circle cx="81.2" cy="126.0" r="10.1" fill="#f6b21a"/><circle cx="74.8" cy="126.0" r="10.1" fill="#f6b21a"/><circle cx="69.0" cy="123.3" r="10.1" fill="#f6b21a"/><circle cx="65.0" cy="118.2" r="10.1" fill="#f6b21a"/><circle cx="63.6" cy="112.0" r="10.1" fill="#f6b21a"/><circle cx="65.0" cy="105.8" r="10.1" fill="#f6b21a"/><circle cx="69.0" cy="100.7" r="10.1" fill="#f6b21a"/><circle cx="74.8" cy="98.0" r="10.1" fill="#f6b21a"/><circle cx="81.2" cy="98.0" r="10.1" fill="#f6b21a"/><circle cx="87.0" cy="100.7" r="10.1" fill="#f6b21a"/><circle cx="91.0" cy="105.8" r="10.1" fill="#f6b21a"/><circle cx="84.9" cy="114.1" r="7.2" fill="#fbd25a"/><circle cx="81.9" cy="118.1" r="7.2" fill="#fbd25a"/><circle cx="77.1" cy="119.1" r="7.2" fill="#fbd25a"/><circle cx="72.7" cy="116.9" r="7.2" fill="#fbd25a"/><circle cx="70.8" cy="112.4" r="7.2" fill="#fbd25a"/><circle cx="72.3" cy="107.6" r="7.2" fill="#fbd25a"/><circle cx="76.4" cy="105.0" r="7.2" fill="#fbd25a"/><circle cx="81.3" cy="105.6" r="7.2" fill="#fbd25a"/><circle cx="84.6" cy="109.2" r="7.2" fill="#fbd25a"/><circle cx="78" cy="112" r="4.3" fill="#c46a0a"/></pattern></defs>
 </svg>
 
-<nav class="nav" aria-label="Main">
-  <div class="wrap">
-    <a class="logo" href="#top" aria-label="Yuvraj Men's Wear, home"><span class="logo-word">Yuvraj</span><svg class="sym" viewBox="0 0 100 100" aria-hidden="true"><path transform="rotate(-4 50 50)" d="M50 10V90M10 50H90M50 10L83 29M90 50L71 83M50 90L17 71M10 50L29 17" fill="none" stroke="currentColor" stroke-width="9" stroke-linecap="butt" stroke-linejoin="miter"/></svg><span class="nav-sub">MEN'S WEAR</span></a>
-    <div class="nav-links">
-      <a href="#collections">Collections</a>
-      <a href="#looks">Looks</a>
-      <a href="#about">About</a>
-      <a href="#visit">Visit</a>
-      <a class="btn btn-solid" href="https://wa.me/917980965523" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2c-1.5 0-3-.4-4.3-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.2-.4.7-1.4.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.7 11.8 11.8 0 0 0 4.5 4c1.7.7 2.3.8 3.2.6.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.2-1.2-.1-.1-.3-.2-.5-.3z"/></svg>WhatsApp</a>
-    </div>
+<div class="marquee" aria-label="Announcements">
+  <div class="marquee-track">
+    <span>Yuvraj Men's Wear</span><span>Since 2002</span><span>Open 11 AM – 9 PM</span><span>Sizes S to 5XL</span><span>Winter &amp; wedding collection in store</span><span>Shiv Thakur Lane, Burrabazar</span>
+    <span aria-hidden="true">Yuvraj Men's Wear</span><span aria-hidden="true">Since 2002</span><span aria-hidden="true">Open 11 AM – 9 PM</span><span aria-hidden="true">Sizes S to 5XL</span><span aria-hidden="true">Winter &amp; wedding collection in store</span><span aria-hidden="true">Shiv Thakur Lane, Burrabazar</span>
   </div>
-</nav>
+</div>
 
-<header class="hero" id="top">
+<header class="header" id="top">
   <div class="wrap">
-    <div class="hero-grid">
-      <h1>Dressed for every <em>occasion.</em></h1>
-      <div class="hero-side">
-        <div class="kicker"><b>Yuvraj Men's Wear</b> · Burrabazar, Kolkata · Since 2002</div>
-        <p>Office shirts, wedding sherwanis, winter jackets and gym wear. Ready-made clothes for men in sizes S to 5XL.</p>
-        <div class="hindi" lang="hi">युवराज मेन्स वियर</div>
-        <div class="hero-actions">
-          <a class="btn btn-accent" href="tel:+917980965523"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1A17 17 0 0 1 3 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1z"/></svg>Call 79809 65523</a>
-          <a class="btn" href="#visit">Find the shop</a>
-        </div>
-      </div>
+    <button class="icon-btn burger" type="button" id="open-menu" aria-label="Open menu" aria-controls="drawer" aria-expanded="false">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+    </button>
+    <a class="logo" href="#home" aria-label="Yuvraj Men's Wear, home">
+      <span class="logo-stack"><span class="logo-word">Yuvraj</span><span class="logo-sub">MEN'S WEAR</span></span><svg class="sym" viewBox="0 0 100 100" aria-hidden="true"><path transform="rotate(-4 50 50)" d="M50 10V90M10 50H90M50 10L83 29M90 50L71 83M50 90L17 71M10 50L29 17" fill="none" stroke="currentColor" stroke-width="9" stroke-linecap="butt" stroke-linejoin="miter"/></svg>
+    </a>
+    <nav class="nav" aria-label="Main">
+      <ul class="menu">
+        <li><a href="#home">Home</a></li>
+        <li class="has-drop" id="drop">
+          <button type="button" id="drop-btn" aria-expanded="false" aria-controls="drop-list">Collections <svg class="chev" viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M1 3l4 4 4-4"/></svg></button>
+          <ul class="dropdown" id="drop-list">
+            <li><a href="#c-formal">Formal <small>Office</small></a></li>
+            <li><a href="#c-ethnic">Ethnic <small>Weddings</small></a></li>
+            <li><a href="#c-winter">Winter <small>Dec – Feb</small></a></li>
+            <li><a href="#c-casual">Casual <small>Everyday</small></a></li>
+            <li><a href="#c-sports">Sports <small>Gym &amp; walks</small></a></li>
+            <li><a href="#sizes">Big sizes <small>Up to 5XL</small></a></li>
+          </ul>
+        </li>
+        <li><a href="#looks">Outfit Ideas</a></li>
+        <li><a href="#about">About Us</a></li>
+        <li><a href="#visit">Visit Us</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+    <div class="icons">
+      <a class="icon-btn" href="tel:+917980965523" aria-label="Call 79809 65523"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1A17 17 0 0 1 3 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1z"/></svg></a>
+      <a class="icon-btn" href="https://wa.me/917980965523" target="_blank" rel="noopener" aria-label="WhatsApp 79809 65523"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2c-1.5 0-3-.4-4.3-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.2-.4.7-1.4.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.7 11.8 11.8 0 0 0 4.5 4c1.7.7 2.3.8 3.2.6.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.2-1.2-.1-.1-.3-.2-.5-.3z"/></svg></a>
+      <a class="icon-btn" href="https://www.google.com/maps/dir/?api=1&amp;destination=Yuvraj+Mens+Wear+Burrabazar+Kolkata" target="_blank" rel="noopener" aria-label="Get directions"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 21s-7-7.5-7-12a7 7 0 0 1 14 0c0 4.5-7 12-7 12z"/><circle cx="12" cy="9" r="2.5"/></svg></a>
     </div>
-  </div>
-  <figure class="hero-img"><img src="photos/storefront.jpg" alt="Yuvraj shop front at evening, with a lit Yuvraj sign and mannequins in jackets, T-shirts, shirts and a kurta" width="1672" height="941"></figure>
-  <div class="wrap">
-    <dl class="facts">
-      <div><dt>Open</dt><dd>11 AM – 9 PM <span class="open" id="status-mini"></span></dd></div>
-      <div><dt>Sizes</dt><dd>S to 5XL</dd></div>
-      <div><dt>Find us</dt><dd>Shiv Thakur Lane, Daccapatty</dd></div>
-      <div><dt>Call</dt><dd>79809 65523</dd></div>
-    </dl>
   </div>
 </header>
 
-<main>
+<div class="drawer" id="drawer" role="dialog" aria-modal="true" aria-label="Menu">
+  <div class="drawer-bg" data-close></div>
+  <div class="drawer-panel">
+    <div class="drawer-head">
+      <span class="logo"><span class="logo-word" style="font-size:28px">Yuvraj</span><svg class="sym" viewBox="0 0 100 100" aria-hidden="true"><path transform="rotate(-4 50 50)" d="M50 10V90M10 50H90M50 10L83 29M90 50L71 83M50 90L17 71M10 50L29 17" fill="none" stroke="currentColor" stroke-width="9" stroke-linecap="butt" stroke-linejoin="miter"/></svg></span>
+      <button class="icon-btn" type="button" id="close-menu" aria-label="Close menu" data-close><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+    </div>
+    <a href="#home" data-close>Home</a>
+    <span class="lbl">Collections</span>
+    <a class="sub" href="#c-formal" data-close>Formal</a>
+    <a class="sub" href="#c-ethnic" data-close>Ethnic</a>
+    <a class="sub" href="#c-winter" data-close>Winter</a>
+    <a class="sub" href="#c-casual" data-close>Casual</a>
+    <a class="sub" href="#c-sports" data-close>Sports</a>
+    <a class="sub" href="#sizes" data-close>Big sizes (up to 5XL)</a>
+    <a href="#looks" data-close>Outfit Ideas</a>
+    <a href="#about" data-close>About Us</a>
+    <a href="#visit" data-close>Visit Us</a>
+    <a href="#contact" data-close>Contact</a>
+  </div>
+</div>
+
+<main id="home">
+  <div class="slider" id="slider" aria-roledescription="carousel" aria-label="Highlights">
+    <div class="slides">
+      <div class="slide slide-1 active" aria-roledescription="slide" aria-label="1 of 3">
+        <img src="photos/storefront.jpg" alt="Yuvraj shop front at evening, with a lit Yuvraj sign and mannequins in jackets, T-shirts, shirts and a kurta" width="1672" height="941">
+        <div class="wrap">
+          <div class="slide-text">
+            <span class="eyebrow">Burrabazar, Kolkata · Since 2002</span>
+            <h1>Dressed for every occasion</h1>
+            <p>Ready-made clothes for men. Formal, ethnic, winter, casual and sportswear in sizes S to 5XL.</p>
+            <div class="actions">
+              <a class="btn btn-light" href="#collections">See collections</a>
+              <a class="btn btn-gold" href="tel:+917980965523"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1A17 17 0 0 1 3 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1z"/></svg>Call 79809 65523</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="slide" aria-roledescription="slide" aria-label="2 of 3">
+        <div class="slide-split">
+          <div class="txt">
+            <div class="slide-text">
+              <span class="eyebrow">In store now</span>
+              <h2>Winter &amp; wedding season collection</h2>
+              <p style="color:var(--muted)">Sherwanis, Nehru jackets, kurtas, sweaters and jackets. Come in and try them on.</p>
+              <div class="actions"><a class="btn" href="#c-ethnic">Ethnic wear</a><a class="btn btn-ghost" href="#c-winter">Winter wear</a></div>
+            </div>
+          </div>
+          <div class="pic art-pic" aria-hidden="true">
+            <svg class="g" viewBox="0 0 120 200"><use href="#sherwani" style="--c:#7a1c2e;--d:#e3b75a"/></svg>
+            <svg class="g" viewBox="0 0 120 150"><use href="#nehru" style="--c:#c9962b;--d:#4a3109"/></svg>
+            <svg class="g" viewBox="0 0 120 160"><use href="#puffer" style="--c:#3f4a3a;--d:#20271c"/></svg>
+          </div>
+        </div>
+      </div>
+      <div class="slide" aria-roledescription="slide" aria-label="3 of 3">
+        <div class="slide-split">
+          <div class="txt">
+            <div class="slide-text">
+              <span class="eyebrow">Our story</span>
+              <h2>Run by Ravi Agarwal for over 20 years</h2>
+              <p style="color:var(--muted)">A family shop on Shiv Thakur Lane, Daccapatty. Ask for Ravi ji when you visit.</p>
+              <div class="actions"><a class="btn" href="#about">About us</a><a class="btn btn-ghost" href="#visit">Visit the shop</a></div>
+            </div>
+          </div>
+          <div class="pic"><img src="photos/owner.jpg" alt="Ravi Agarwal, owner of Yuvraj Mens Wear, in a lavender kurta" width="600" height="1000"></div>
+        </div>
+      </div>
+    </div>
+    <button class="arrow prev" type="button" id="prev" aria-label="Previous slide"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 5l-7 7 7 7"/></svg></button>
+    <button class="arrow next" type="button" id="next" aria-label="Next slide"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 5l7 7-7 7"/></svg></button>
+    <div class="dots" id="dots">
+      <button class="dot" type="button" aria-label="Show slide 1" aria-current="true"></button>
+      <button class="dot" type="button" aria-label="Show slide 2"></button>
+      <button class="dot" type="button" aria-label="Show slide 3"></button>
+    </div>
+  </div>
+
+  <div class="strip">
+    <div class="wrap">
+      <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg><p><b>11 AM – 9 PM</b><span id="status-mini">Shop hours</span></p></div>
+      <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 18h18M3 18l2.5-5M21 18l-2.5-5M7 18v-2.5M11 18v-3.5M15 18v-2.5M19 18v-3"/></svg><p><b>S to 5XL</b><span>All sizes in stock</span></p></div>
+      <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 21s-7-7.5-7-12a7 7 0 0 1 14 0c0 4.5-7 12-7 12z"/><circle cx="12" cy="9" r="2.5"/></svg><p><b>Burrabazar</b><span>Shiv Thakur Lane</span></p></div>
+      <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 3l2.6 5.6 6.1.7-4.5 4.1 1.2 6L12 16.4 6.6 19.4l1.2-6L3.3 9.3l6.1-.7z"/></svg><p><b>Since 2002</b><span>20+ years</span></p></div>
+    </div>
+  </div>
+
   <section id="collections">
     <div class="wrap">
-      <div class="sec-head">
-        <div>
-          <div class="kicker">The collections</div>
-          <h2>Six departments.<br>One shop.</h2>
-        </div>
-        <p>Walk in for one shirt or a full wedding wardrobe. We'll help you choose.</p>
+      <div class="title">
+        <span class="orn"><svg class="sym" viewBox="0 0 100 100" aria-hidden="true"><path transform="rotate(-4 50 50)" d="M50 10V90M10 50H90M50 10L83 29M90 50L71 83M50 90L17 71M10 50L29 17" fill="none" stroke="currentColor" stroke-width="9" stroke-linecap="butt" stroke-linejoin="miter"/></svg></span>
+        <h2>Our Collections</h2>
+        <p>Six departments under one roof. Walk in for one shirt or a full wedding wardrobe.</p>
       </div>
-      <div class="tiles">
-        <article class="tile">
-          <div class="art" aria-hidden="true">
-            <svg class="g" viewBox="0 0 120 150"><use href="#shirt" style="--c:var(--garment);--d:var(--garment-line)"/></svg>
-            <svg class="g" viewBox="0 0 120 160"><use href="#blazer" style="--c:#2b2b2b;--d:#111"/></svg>
-          </div>
-          <div class="body"><span class="for">Office</span><h3>Formal</h3><p class="items">Formal shirts, blazers, formal pants</p></div>
+      <div class="collections">
+        <article class="card-c" id="c-formal">
+          <div class="arch"><div class="art" aria-hidden="true">
+            <svg class="g" viewBox="0 0 120 150"><use href="#shirt" style="--c:#e9eef6;--d:#6c7a96"/></svg>
+            <svg class="g" viewBox="0 0 120 160"><use href="#blazer" style="--c:#2f3a52;--d:#151b28"/></svg>
+          </div></div>
+          <span class="for">For the office</span><h3>Formal Wear</h3><p class="items">Formal shirts, blazers and formal pants</p>
         </article>
-        <article class="tile">
-          <div class="art" aria-hidden="true">
-            <svg class="g" viewBox="0 0 120 190"><use href="#kurta" style="--c:var(--garment);--d:var(--garment-line)"/></svg>
-            <svg class="g" viewBox="0 0 120 200"><use href="#sherwani" style="--c:var(--accent);--d:#111"/></svg>
-          </div>
-          <div class="body"><span class="for">Weddings &amp; festivals</span><h3>Ethnic</h3><p class="items">Kurtas, Nehru jackets, sherwanis, suits</p></div>
+        <article class="card-c" id="c-ethnic">
+          <div class="arch"><div class="art" aria-hidden="true">
+            <svg class="g" viewBox="0 0 120 190"><use href="#kurta" style="--c:#f1e3c0;--d:#a8792a"/></svg>
+            <svg class="g" viewBox="0 0 120 200"><use href="#sherwani" style="--c:#7a1c2e;--d:#e3b75a"/></svg>
+          </div></div>
+          <span class="for">Weddings &amp; festivals</span><h3>Ethnic Wear</h3><p class="items">Kurtas, Nehru jackets, sherwanis and suits</p>
         </article>
-        <article class="tile">
-          <div class="art" aria-hidden="true">
-            <svg class="g" viewBox="0 0 120 150"><use href="#sweater" style="--c:var(--garment);--d:var(--garment-line)"/></svg>
-            <svg class="g" viewBox="0 0 120 160"><use href="#puffer" style="--c:#2b2b2b;--d:#111"/></svg>
-          </div>
-          <div class="body"><span class="for">December to February</span><h3>Winter</h3><p class="items">Sweaters, sweatshirts, jackets, turtle necks</p></div>
+        <article class="card-c" id="c-winter">
+          <div class="arch"><div class="art" aria-hidden="true">
+            <svg class="g" viewBox="0 0 120 150"><use href="#sweater" style="--c:#b8703f;--d:#6e3816"/></svg>
+            <svg class="g" viewBox="0 0 120 160"><use href="#puffer" style="--c:#3f4a3a;--d:#20271c"/></svg>
+          </div></div>
+          <span class="for">December to February</span><h3>Winter Wear</h3><p class="items">Sweaters, sweatshirts, jackets and turtle necks</p>
         </article>
-        <article class="tile">
-          <div class="art" aria-hidden="true">
-            <svg class="g" viewBox="0 0 120 150"><use href="#tee" style="--c:var(--garment);--d:var(--garment-line)"/></svg>
-            <svg class="g" viewBox="0 0 120 170"><use href="#jeans" style="--c:#2b2b2b;--d:#8a8a8a"/></svg>
-          </div>
-          <div class="body"><span class="for">Everyday &amp; college</span><h3>Casual</h3><p class="items">Casual shirts, polo and round neck T-shirts, jeans, trousers, shorts, tracks</p></div>
+        <article class="card-c" id="c-casual">
+          <div class="arch"><div class="art" aria-hidden="true">
+            <svg class="g" viewBox="0 0 120 150"><use href="#tee" style="--c:#f7f5ef;--d:#9aa3b5"/></svg>
+            <svg class="g" viewBox="0 0 120 170"><use href="#jeans" style="--c:#2d4f8a;--d:#a9c1e6"/></svg>
+          </div></div>
+          <span class="for">Everyday &amp; college</span><h3>Casual Wear</h3><p class="items">Casual shirts, polo and round neck T-shirts, jeans, trousers, shorts and tracks</p>
         </article>
-        <article class="tile">
-          <div class="art" aria-hidden="true">
-            <svg class="g" viewBox="0 0 120 150"><use href="#track" style="--c:#2b2b2b;--d:var(--accent)"/></svg>
-            <svg class="g" viewBox="0 0 120 100"><use href="#shorts" style="--c:#3a3a3a;--d:var(--accent)"/></svg>
-          </div>
-          <div class="body"><span class="for">Gym, walks &amp; games</span><h3>Sports</h3><p class="items">Dry-fit T-shirts, dry-fit tracks, track suits, jackets, shorts</p></div>
+        <article class="card-c" id="c-sports">
+          <div class="arch"><div class="art" aria-hidden="true">
+            <svg class="g" viewBox="0 0 120 150"><use href="#track" style="--c:#24262e;--d:#c9962b"/></svg>
+            <svg class="g" viewBox="0 0 120 100"><use href="#shorts" style="--c:#3a3d48;--d:#c9962b"/></svg>
+          </div></div>
+          <span class="for">Gym, walks &amp; games</span><h3>Sports Wear</h3><p class="items">Dry-fit T-shirts, dry-fit tracks, track suits, jackets and shorts</p>
         </article>
-        <article class="tile">
-          <div class="art" aria-hidden="true" style="align-items:center">
-            <span class="serif" style="font-size:88px;line-height:1;color:var(--accent)">5XL</span>
-          </div>
-          <div class="body"><span class="for">Big &amp; tall</span><h3>Every size</h3><p class="items">Shirts and T-shirts from S all the way to 5XL</p></div>
+        <article class="card-c">
+          <div class="arch" style="align-items:center"><span style="font-family:var(--font-head);font-size:clamp(64px,8vw,96px);line-height:1;color:var(--gold-deep)">5XL</span></div>
+          <span class="for">Big &amp; tall</span><h3>Every Size</h3><p class="items">Shirts and T-shirts from S all the way to 5XL</p>
         </article>
       </div>
     </div>
   </section>
 
-  <section class="sizes" aria-label="Sizes">
+  <section class="sizes" id="sizes" aria-label="Sizes">
     <div class="wrap">
-      <div class="kicker">Shirts &amp; T-shirts</div>
+      <div class="lbl">Shirts &amp; T-shirts</div>
       <div class="size-line" aria-label="Sizes S, M, L, XL, XXL, 3XL, 4XL and 5XL">
-        <span style="font-size:clamp(28px,4vw,48px)">S</span><span style="font-size:clamp(32px,4.8vw,58px)">M</span><span style="font-size:clamp(36px,5.6vw,68px)">L</span><span style="font-size:clamp(40px,6.4vw,78px)">XL</span><span style="font-size:clamp(44px,7.2vw,88px)">XXL</span><span style="font-size:clamp(48px,8vw,98px)">3XL</span><span style="font-size:clamp(52px,8.8vw,108px)">4XL</span><span style="font-size:clamp(56px,9.6vw,120px)">5XL</span>
+        <span style="font-size:clamp(26px,3.6vw,44px)">S</span><span style="font-size:clamp(30px,4.3vw,52px)">M</span><span style="font-size:clamp(34px,5vw,60px)">L</span><span style="font-size:clamp(38px,5.7vw,68px)">XL</span><span style="font-size:clamp(42px,6.4vw,76px)">XXL</span><span style="font-size:clamp(46px,7.1vw,84px)">3XL</span><span style="font-size:clamp(50px,7.8vw,92px)">4XL</span><span style="font-size:clamp(54px,8.5vw,100px)">5XL</span>
       </div>
       <p>Big and tall? We keep the sizes most shops don't. Come in and try them on.</p>
     </div>
   </section>
 
-  <section id="looks">
+  <section class="looks-bg" id="looks">
     <div class="wrap">
-      <div class="sec-head">
-        <div>
-          <div class="kicker">Not sure what to wear?</div>
-          <h2>Looks we put together.</h2>
-        </div>
-        <p>Tell us where you're going. We'll match the colours and sizes for you.</p>
+      <div class="title">
+        <span class="orn"><svg class="sym" viewBox="0 0 100 100" aria-hidden="true"><path transform="rotate(-4 50 50)" d="M50 10V90M10 50H90M50 10L83 29M90 50L71 83M50 90L17 71M10 50L29 17" fill="none" stroke="currentColor" stroke-width="9" stroke-linecap="butt" stroke-linejoin="miter"/></svg></span>
+        <h2>Outfit Ideas</h2>
+        <p>Not sure what to wear? Tell us where you're going and we'll match the colours and sizes for you.</p>
       </div>
       <div class="looks">
-        <div class="look">
-          <h3>Durga Puja<small>Pandal hopping, all five days</small></h3>
-          <ul>
-            <li><b style="background:#efe1bf"></b>Cotton kurta</li>
-            <li><b style="background:#f7f5f0"></b>Pajama or churidar</li>
-            <li><b style="background:#d7a548"></b>Nehru jacket for Ashtami</li>
-          </ul>
-        </div>
-        <div class="look">
-          <h3>Wedding guest<small>Sangeet, reception, shaadi</small></h3>
-          <ul>
-            <li><b style="background:#8a1f33"></b>Sherwani or bandhgala suit</li>
-            <li><b style="background:#e3b75a"></b>Matching kurta set</li>
-            <li><b style="background:#2c2c3a"></b>Blazer for the reception</li>
-          </ul>
-        </div>
-        <div class="look">
-          <h3>Office<small>Interviews, meetings, first day</small></h3>
-          <ul>
-            <li><b style="background:#dfe7f3"></b>Light formal shirt</li>
-            <li><b style="background:#3b4a6b"></b>Navy or grey formal pants</li>
-            <li><b style="background:#56657f"></b>Blazer to finish it off</li>
-          </ul>
-        </div>
-        <div class="look">
-          <h3>Kolkata winter<small>December to February</small></h3>
-          <ul>
-            <li><b style="background:#6e1f2c"></b>Turtle neck or sweater</li>
-            <li><b style="background:#cfa046"></b>Jacket for the evenings</li>
-            <li><b style="background:#2d4f8a"></b>Dark jeans</li>
-          </ul>
-        </div>
+        <div class="look"><h3>Durga Puja<small>Pandal hopping, all five days</small></h3>
+          <ul><li><b style="background:#efe1bf"></b>Cotton kurta</li><li><b style="background:#f7f5f0"></b>Pajama or churidar</li><li><b style="background:#d7a548"></b>Nehru jacket for Ashtami</li></ul></div>
+        <div class="look"><h3>Wedding Guest<small>Sangeet, reception, shaadi</small></h3>
+          <ul><li><b style="background:#8a1f33"></b>Sherwani or bandhgala suit</li><li><b style="background:#e3b75a"></b>Matching kurta set</li><li><b style="background:#2c2c3a"></b>Blazer for the reception</li></ul></div>
+        <div class="look"><h3>Office<small>Interviews, meetings, first day</small></h3>
+          <ul><li><b style="background:#dfe7f3"></b>Light formal shirt</li><li><b style="background:#3b4a6b"></b>Navy or grey formal pants</li><li><b style="background:#56657f"></b>Blazer to finish it off</li></ul></div>
+        <div class="look"><h3>Kolkata Winter<small>December to February</small></h3>
+          <ul><li><b style="background:#6e1f2c"></b>Turtle neck or sweater</li><li><b style="background:#cfa046"></b>Jacket for the evenings</li><li><b style="background:#2d4f8a"></b>Dark jeans</li></ul></div>
       </div>
     </div>
   </section>
 
-  <section style="padding-top:0">
+  <section id="about">
     <div class="wrap">
-      <div class="promise">
-        <div><div class="kicker">Price</div><h3>Burrabazar prices</h3><p>Fair rates on every piece, for one shirt or a whole wedding wardrobe.</p></div>
-        <div><div class="kicker">Fit</div><h3>The right fit</h3><p>Sizes S to 5XL. Try it on in the shop and we'll help you find the cut that suits you.</p></div>
-        <div><div class="kicker">Range</div><h3>All in one place</h3><p>Formal, ethnic, winter, casual and sportswear under one roof.</p></div>
+      <div class="title">
+        <span class="orn"><svg class="sym" viewBox="0 0 100 100" aria-hidden="true"><path transform="rotate(-4 50 50)" d="M50 10V90M10 50H90M50 10L83 29M90 50L71 83M50 90L17 71M10 50L29 17" fill="none" stroke="currentColor" stroke-width="9" stroke-linecap="butt" stroke-linejoin="miter"/></svg></span>
+        <h2>The Story of Yuvraj</h2>
       </div>
-      <p class="quote">A family shop in Burrabazar, dressing Kolkata's men for <em>every occasion.</em></p>
-    </div>
-  </section>
-
-  <section id="about" class="about-band">
-    <div class="wrap about">
-      <figure class="owner">
-        <img src="photos/owner.jpg" alt="Ravi Agarwal, owner of Yuvraj Mens Wear, in a lavender embroidered kurta and white pajama" width="600" height="1000">
-        <figcaption><b>Ravi Agarwal</b> · Owner, Yuvraj Mens Wear</figcaption>
-      </figure>
-      <div>
-        <div class="kicker">Our story</div>
-        <h2>Since <em>2002.</em></h2>
-        <div class="about-text">
-          <p>Ravi Agarwal opened Yuvraj Mens Wear in 2002 on Shiv Thakur Lane, in Daccapatty, Burrabazar.</p>
+      <div class="about-card">
+        <figure class="round">
+          <img src="photos/owner-round.jpg" alt="Ravi Agarwal, owner of Yuvraj Mens Wear" width="560" height="560">
+          <figcaption><b>Ravi Agarwal</b> · Owner</figcaption>
+        </figure>
+        <div class="about-txt">
+          <h3>About us · <em>since 2002</em></h3>
+          <p class="lead">Ravi Agarwal opened Yuvraj Mens Wear in 2002 on Shiv Thakur Lane, in Daccapatty, Burrabazar.</p>
           <p>For more than 20 years he has helped Kolkata's men find the right clothes, from a first office shirt to a wedding sherwani. He picks the stock himself, keeps Burrabazar prices, and makes sure there is a size for everyone, all the way up to 5XL.</p>
           <p>Come to the shop and ask for Ravi ji. He'll help you put the whole outfit together.</p>
-        </div>
-        <div class="stats">
-          <div><strong>2002</strong><span>Year we opened</span></div>
-          <div><strong>20+</strong><span>Years in menswear</span></div>
-          <div><strong>S–5XL</strong><span>Sizes in stock</span></div>
+          <div class="stats">
+            <div><strong>2002</strong><span>Year we opened</span></div>
+            <div><strong>20+</strong><span>Years in menswear</span></div>
+            <div><strong>S–5XL</strong><span>Sizes in stock</span></div>
+          </div>
         </div>
       </div>
     </div>
   </section>
 
-  <section id="visit" class="visit-band">
-    <div class="wrap visit">
-      <div>
-        <div class="kicker">Visit us</div>
-        <h2>Come to the shop.</h2>
-        <p class="addr">Shiv Thakur Lane, Daccapatty<br><span>Burrabazar, Kolkata 700007</span></p>
-        <ol class="steps">
-          <li>Come to Daccapatty in Burrabazar.</li>
-          <li>Find the ICICI Bank branch.</li>
-          <li>Take Shiv Thakur Lane behind the bank and look for the "Yuvraj" sign.</li>
-        </ol>
-        <div class="links">
-          <a class="btn btn-solid" href="https://www.google.com/maps/dir/?api=1&amp;destination=Yuvraj+Mens+Wear+Burrabazar+Kolkata" target="_blank" rel="noopener">Get directions</a>
-          <a class="btn" href="https://share.google/QCK9qBCFQ7jnHPocM" target="_blank" rel="noopener">Google</a>
-          <a class="btn" href="https://www.justdial.com/Kolkata/Yuvraj-Mens-Wear-Behind-Icici-Bank-Daccapatty-Burrabazar/033PF002384_BZDET" target="_blank" rel="noopener">Justdial</a>
-        </div>
+  <section class="why-bg" aria-label="Why shop with us">
+    <div class="wrap">
+      <div class="why">
+        <div><span class="ic"><svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 16l12-12h10v10L14 26z"/><circle cx="21" cy="11" r="2"/></svg></span><h3>Burrabazar Prices</h3><p>Fair rates on every piece, for one shirt or a whole wedding wardrobe.</p></div>
+        <div><span class="ic"><svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M3 22h26M3 22l3-6M29 22l-3-6M8 22v-3M13 22v-4M18 22v-3M23 22v-4"/></svg></span><h3>The Right Fit</h3><p>Sizes S to 5XL. Try it on in the shop and we'll help you find the cut that suits you.</p></div>
+        <div><span class="ic"><svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 6h20v20H6zM6 13h20M13 13v13"/></svg></span><h3>All in One Place</h3><p>Formal, ethnic, winter, casual and sportswear under one roof.</p></div>
       </div>
-      <div class="contact">
-        <div class="c-row">
-          <span class="c-label">Call or WhatsApp Ravi Agarwal</span>
-          <div class="phone"><a class="num" href="tel:+917980965523">79809 65523</a><span class="tag">Shop</span><a class="mini" href="https://wa.me/917980965523" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2c-1.5 0-3-.4-4.3-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.2-.4.7-1.4.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.7 11.8 11.8 0 0 0 4.5 4c1.7.7 2.3.8 3.2.6.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.2-1.2-.1-.1-.3-.2-.5-.3z"/></svg>WhatsApp</a><button class="mini copy" type="button" id="copy1" data-num="7980965523">Copy</button></div>
-          <div class="phone"><a class="num" href="tel:+919830311840">98303 11840</a><a class="mini" href="https://wa.me/919830311840" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2c-1.5 0-3-.4-4.3-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.2-.4.7-1.4.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.7 11.8 11.8 0 0 0 4.5 4c1.7.7 2.3.8 3.2.6.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.2-1.2-.1-.1-.3-.2-.5-.3z"/></svg>WhatsApp</a><button class="mini copy" type="button" id="copy2" data-num="9830311840">Copy</button></div>
+    </div>
+  </section>
+
+  <section class="visit-bg" id="visit">
+    <div class="wrap">
+      <div class="title">
+        <span class="orn"><svg class="sym" viewBox="0 0 100 100" aria-hidden="true"><path transform="rotate(-4 50 50)" d="M50 10V90M10 50H90M50 10L83 29M90 50L71 83M50 90L17 71M10 50L29 17" fill="none" stroke="currentColor" stroke-width="9" stroke-linecap="butt" stroke-linejoin="miter"/></svg></span>
+        <h2>Visit Us</h2>
+        <p>Call ahead to check a size or colour, or just walk in.</p>
+      </div>
+      <div class="visit-card" id="contact">
+        <div>
+          <div class="v-row">
+            <span class="v-lbl">Call or WhatsApp Ravi Agarwal</span>
+            <div class="num-row"><a class="num" href="tel:+917980965523">79809 65523</a><span class="tag">Shop</span></div>
+            <div class="num-row"><a class="mini" href="https://wa.me/917980965523" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2c-1.5 0-3-.4-4.3-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.2-.4.7-1.4.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.7 11.8 11.8 0 0 0 4.5 4c1.7.7 2.3.8 3.2.6.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.2-1.2-.1-.1-.3-.2-.5-.3z"/></svg>WhatsApp</a><button class="mini copy" type="button" id="copy1" data-num="7980965523">Copy</button></div>
+            <div class="num-row" style="margin-top:8px"><a class="num" href="tel:+919830311840">98303 11840</a></div>
+            <div class="num-row"><a class="mini" href="https://wa.me/919830311840" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2c-1.5 0-3-.4-4.3-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.2-.4.7-1.4.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.7 11.8 11.8 0 0 0 4.5 4c1.7.7 2.3.8 3.2.6.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.2-1.2-.1-.1-.3-.2-.5-.3z"/></svg>WhatsApp</a><button class="mini copy" type="button" id="copy2" data-num="9830311840">Copy</button></div>
+          </div>
+          <div class="v-row">
+            <span class="v-lbl">Shop hours</span>
+            <span class="hours">11 AM – 9 PM</span>
+            <span class="status" id="status" hidden></span>
+          </div>
+          <div class="v-row">
+            <span class="v-lbl">Email</span>
+            <span class="email">raviagarwal11270@gmail.com</span>
+          </div>
         </div>
-        <div class="c-row">
-          <span class="c-label">Shop hours</span>
-          <div class="hours"><strong>11 AM – 9 PM</strong><span class="status" id="status" hidden></span></div>
+        <div>
+          <div class="v-row">
+            <span class="v-lbl">Address</span>
+            <p class="addr">Shiv Thakur Lane, Daccapatty,<br>Burrabazar, Kolkata 700007</p>
+          </div>
+          <div class="v-row">
+            <span class="v-lbl">How to find us</span>
+            <ol class="steps">
+              <li>Come to Daccapatty in Burrabazar.</li>
+              <li>Find the ICICI Bank branch.</li>
+              <li>Take Shiv Thakur Lane behind the bank and look for the "Yuvraj" sign.</li>
+            </ol>
+          </div>
+          <div class="links">
+            <a class="btn" href="https://www.google.com/maps/dir/?api=1&amp;destination=Yuvraj+Mens+Wear+Burrabazar+Kolkata" target="_blank" rel="noopener">Get directions</a>
+            <a class="btn btn-ghost" href="https://share.google/QCK9qBCFQ7jnHPocM" target="_blank" rel="noopener">Google</a>
+            <a class="btn btn-ghost" href="https://www.justdial.com/Kolkata/Yuvraj-Mens-Wear-Behind-Icici-Bank-Daccapatty-Burrabazar/033PF002384_BZDET" target="_blank" rel="noopener">Justdial</a>
+          </div>
         </div>
-        <div class="c-row">
-          <span class="c-label">Email</span>
-          <span class="email">raviagarwal11270@gmail.com</span>
-        </div>
-        <div class="sign">
-          <img src="photos/shopfront.jpg" alt="The real Yuvraj Mens Wear shop front with its lit sign and mannequins" width="177" height="222">
-          <p>Look for this sign on Shiv Thakur Lane. The mannequins at the door show what's new this season.</p>
+        <div class="shop">
+          <figure>
+            <img src="photos/shopfront.jpg" alt="The real Yuvraj Mens Wear shop front with its lit sign and mannequins" width="177" height="222">
+            <figcaption>Look for this sign on Shiv Thakur Lane.</figcaption>
+          </figure>
         </div>
       </div>
     </div>
@@ -533,46 +682,104 @@ footer .logo { font-size: clamp(44px, 8vw, 88px); }
 </main>
 
 <footer>
-  <div class="wrap">
-    <div class="f-top">
-      <div>
-        <a class="logo" href="#top"><span class="logo-word">Yuvraj</span><svg class="sym" viewBox="0 0 100 100" aria-hidden="true"><path transform="rotate(-4 50 50)" d="M50 10V90M10 50H90M50 10L83 29M90 50L71 83M50 90L17 71M10 50L29 17" fill="none" stroke="currentColor" stroke-width="9" stroke-linecap="butt" stroke-linejoin="miter"/></svg></a>
-        <div class="f-sub">MEN'S WEAR</div>
+  <div class="foot">
+    <div class="marigold" aria-hidden="true"><svg width="110" height="100%" preserveAspectRatio="none"><rect width="100%" height="100%" fill="url(#garland)"/></svg></div>
+    <div class="foot-mid">
+      <a class="logo foot-logo" href="#home"><span class="logo-word">Yuvraj</span><span class="logo-sub">MEN'S WEAR</span></a>
+      <div class="foot-cols">
+        <p class="l">Yuvraj Men's Wear is a family-run menswear shop in Burrabazar, Kolkata. Owned by Ravi Agarwal, it has dressed the city's men for weddings, festivals, offices and everyday life since 2002.</p>
+        <span class="bar"></span>
+        <div class="r">
+          <span class="muted">OPEN DAILY · 11:00 AM TO 9:00 PM (IST)</span>
+          <span>Yuvraj Men's Wear, Shiv Thakur Lane, Daccapatty, Burrabazar, Kolkata 700007</span>
+          <span class="muted" style="margin-top:8px">Call or WhatsApp</span>
+          <b>79809 65523 · 98303 11840</b>
+          <span class="muted" style="margin-top:8px">Email us on</span>
+          <b class="email">raviagarwal11270@gmail.com</b>
+        </div>
       </div>
-      <div class="f-info">
-        <span>Shiv Thakur Lane, Daccapatty, Burrabazar, Kolkata 700007</span>
-        <span>79809 65523 · 98303 11840</span>
-        <span>Open 11 AM – 9 PM</span>
+      <div class="socials">
+        <a href="https://wa.me/917980965523" target="_blank" rel="noopener" aria-label="WhatsApp"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2c-1.5 0-3-.4-4.3-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.2-.4.7-1.4.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.7 11.8 11.8 0 0 0 4.5 4c1.7.7 2.3.8 3.2.6.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.2-1.2-.1-.1-.3-.2-.5-.3z"/></svg></a>
+        <a href="tel:+917980965523" aria-label="Call"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1A17 17 0 0 1 3 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1z"/></svg></a>
+        <a href="https://www.google.com/maps/dir/?api=1&amp;destination=Yuvraj+Mens+Wear+Burrabazar+Kolkata" target="_blank" rel="noopener" aria-label="Directions"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 21s-7-7.5-7-12a7 7 0 0 1 14 0c0 4.5-7 12-7 12z"/><circle cx="12" cy="9" r="2.5"/></svg></a>
       </div>
     </div>
-    <div class="f-bottom">Since 2002 · Ready-made clothes for men · Formal · Ethnic · Winter · Casual · Sports · S to 5XL</div>
+    <div class="marigold" aria-hidden="true"><svg width="110" height="100%" preserveAspectRatio="none"><rect width="100%" height="100%" fill="url(#garland)"/></svg></div>
+  </div>
+  <div class="bottom">
+    <div class="wrap">
+      <nav aria-label="Footer">
+        <a href="#about">About Us</a><a href="#collections">Collections</a><a href="#looks">Outfit Ideas</a><a href="#sizes">Sizes</a><a href="#visit">Visit Us</a><a href="#contact">Contact Us</a>
+      </nav>
+      <div class="copy-line"><b>© 2026,</b> Yuvraj Men's Wear · Since 2002</div>
+    </div>
   </div>
 </footer>
 
+<a class="top-btn" id="top-btn" hidden href="#top" aria-label="Back to top"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 12l6-6 6 6M6 19l6-6 6 6"/></svg></a>
+
 <script>
-document.querySelectorAll('.copy').forEach(function (btn) {
-  btn.addEventListener('click', function () {
-    var num = btn.getAttribute('data-num');
-    var done = function () { btn.textContent = 'Copied'; setTimeout(function () { btn.textContent = 'Copy'; }, 1800); };
-    var fallback = function () {
-      var r = document.createRange(); r.selectNodeContents(btn.parentNode.querySelector('a[href^="tel"]'));
-      var s = getSelection(); s.removeAllRanges(); s.addRange(r);
-    };
-    try { navigator.clipboard.writeText(num).then(done, fallback); } catch (e) { fallback(); }
-  });
-});
-// Open or closed right now, in Kolkata time (IST, UTC+5:30).
 (function () {
+  // Slider
+  var slides = [].slice.call(document.querySelectorAll('.slide'));
+  var dots = [].slice.call(document.querySelectorAll('.dot'));
+  var i = 0, timer = null;
+  var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  function show(n) {
+    i = (n + slides.length) % slides.length;
+    slides.forEach(function (s, k) { s.classList.toggle('active', k === i); s.setAttribute('aria-hidden', k === i ? 'false' : 'true'); });
+    dots.forEach(function (d, k) { d.setAttribute('aria-current', k === i ? 'true' : 'false'); });
+  }
+  function start() { if (!reduce) { stop(); timer = setInterval(function () { show(i + 1); }, 6000); } }
+  function stop() { if (timer) clearInterval(timer); timer = null; }
+  dots.forEach(function (d, k) { d.addEventListener('click', function () { show(k); start(); }); });
+  document.getElementById('prev').addEventListener('click', function () { show(i - 1); start(); });
+  document.getElementById('next').addEventListener('click', function () { show(i + 1); start(); });
+  var slider = document.getElementById('slider');
+  slider.addEventListener('mouseenter', stop); slider.addEventListener('mouseleave', start);
+  slider.addEventListener('focusin', stop);
+  var x0 = null;
+  slider.addEventListener('touchstart', function (e) { x0 = e.touches[0].clientX; }, { passive: true });
+  slider.addEventListener('touchend', function (e) { if (x0 === null) return; var dx = e.changedTouches[0].clientX - x0; if (Math.abs(dx) > 40) { show(i + (dx < 0 ? 1 : -1)); start(); } x0 = null; });
+  show(0); start();
+
+  // Collections dropdown (click for touch screens)
+  var drop = document.getElementById('drop'), dropBtn = document.getElementById('drop-btn');
+  dropBtn.addEventListener('click', function () { var o = drop.classList.toggle('open'); dropBtn.setAttribute('aria-expanded', o); });
+  document.addEventListener('click', function (e) { if (!drop.contains(e.target)) { drop.classList.remove('open'); dropBtn.setAttribute('aria-expanded', 'false'); } });
+  drop.querySelectorAll('a').forEach(function (a) { a.addEventListener('click', function () { drop.classList.remove('open'); }); });
+
+  // Mobile drawer
+  var drawer = document.getElementById('drawer'), openBtn = document.getElementById('open-menu');
+  function setDrawer(o) { drawer.classList.toggle('open', o); openBtn.setAttribute('aria-expanded', o); if (o) document.getElementById('close-menu').focus(); }
+  openBtn.addEventListener('click', function () { setDrawer(true); });
+  drawer.querySelectorAll('[data-close]').forEach(function (el) { el.addEventListener('click', function () { setDrawer(false); }); });
+  document.addEventListener('keydown', function (e) { if (e.key === 'Escape') { setDrawer(false); drop.classList.remove('open'); } });
+
+  // Back-to-top button appears after scrolling
+  var tb = document.getElementById('top-btn');
+  function onScroll() { tb.hidden = window.scrollY < 600; }
+  window.addEventListener('scroll', onScroll, { passive: true }); onScroll();
+
+  // Copy buttons
+  document.querySelectorAll('.copy').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      var num = btn.getAttribute('data-num');
+      var done = function () { btn.textContent = 'Copied'; setTimeout(function () { btn.textContent = 'Copy'; }, 1800); };
+      var fallback = function () { btn.textContent = num; };
+      try { navigator.clipboard.writeText(num).then(done, fallback); } catch (e) { fallback(); }
+    });
+  });
+
+  // Open / closed now, Kolkata time (IST, UTC+5:30)
   try {
     var now = new Date();
     var ist = new Date(now.getTime() + now.getTimezoneOffset() * 60000 + 330 * 60000);
-    var h = ist.getHours() + ist.getMinutes() / 60;
-    var open = h >= 11 && h < 21;
+    var h = ist.getHours() + ist.getMinutes() / 60, open = h >= 11 && h < 21;
     var el = document.getElementById('status');
     el.textContent = open ? 'Open now' : 'Closed now · opens 11 AM';
-    el.className = 'status ' + (open ? 'is-open' : 'is-closed');
-    el.hidden = false;
-    document.getElementById('status-mini').textContent = open ? '· Open now' : '';
+    el.className = 'status ' + (open ? 'is-open' : 'is-closed'); el.hidden = false;
+    document.getElementById('status-mini').textContent = open ? 'Open now' : 'Closed now';
   } catch (e) {}
 })();
 </script>
