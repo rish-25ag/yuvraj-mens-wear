@@ -128,7 +128,7 @@ body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-a
 .slide-split .art-pic svg + svg { margin-left: -30px; }
 @media (max-width: 760px) {
   .slide-split { grid-template-columns: 1fr; }
-  .slide-split .txt { padding: 36px 20px 28px; }
+  .slide-split .txt { padding: 36px 20px 56px; }
   .slide-split .pic { min-height: 300px; order: -1; }
   .slide-1 { display: block; min-height: 0; background: var(--black); }
   .slide-1 img { position: static; aspect-ratio: 1672 / 941; height: auto; }
@@ -136,6 +136,14 @@ body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-a
   .slide-1 .wrap { padding-block: 28px 56px; }
   .card-c .arch { max-width: 320px; width: 100%; margin-inline: auto; }
 }
+.slide-split.real { background: var(--black); color: var(--on-black); }
+.slide-split.real .slide-text .eyebrow { color: #f3d38a; }
+.slide-split.real .slide-text p { color: color-mix(in srgb, var(--on-black) 80%, transparent); }
+.shopfront { overflow: hidden; display: grid; place-items: center; padding: 32px 20px; }
+.shopfront .blur { position: absolute; inset: -30px; background-size: cover; background-position: center; filter: blur(22px) brightness(.55) saturate(1.2); }
+.shopfront figure { position: relative; margin: 0; display: grid; gap: 10px; justify-items: center; }
+.shopfront img { position: static !important; width: clamp(200px, 22vw, 290px) !important; height: auto !important; aspect-ratio: 177 / 222; object-fit: cover; border: 6px solid #fbf7ef; box-shadow: 0 18px 40px rgba(0,0,0,.45); }
+.shopfront figcaption { color: #fbf7ef; font-size: 14px; letter-spacing: .04em; }
 .dots { position: absolute; left: 0; right: 0; bottom: 18px; display: flex; justify-content: center; gap: 10px; z-index: 3; }
 .dot { width: 10px; height: 10px; border-radius: 50%; border: 1.5px solid #fff; background: rgba(255,255,255,.35); padding: 0; cursor: pointer; box-shadow: 0 0 0 1px rgba(0,0,0,.25); }
 .dot[aria-current="true"] { background: #fff; }
@@ -478,17 +486,25 @@ section { padding-block: 88px; }
 <main id="home">
   <div class="slider" id="slider" aria-roledescription="carousel" aria-label="Highlights">
     <div class="slides">
-      <div class="slide slide-1 active" aria-roledescription="slide" aria-label="1 of 3">
-        <img src="photos/storefront.jpg" alt="Yuvraj shop front at evening, with a lit Yuvraj sign and mannequins in jackets, T-shirts, shirts and a kurta" width="1672" height="941">
-        <div class="wrap">
-          <div class="slide-text">
-            <span class="eyebrow">Burrabazar, Kolkata · Since 2002</span>
-            <h1>Dressed for every occasion</h1>
-            <p>Ready-made clothes for men. Formal, ethnic, winter, casual and sportswear in sizes S to 5XL.</p>
-            <div class="actions">
-              <a class="btn btn-light" href="#collections">See collections</a>
-              <a class="btn btn-gold" href="tel:+917980965523"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1A17 17 0 0 1 3 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1z"/></svg>Call 79809 65523</a>
+      <div class="slide active" aria-roledescription="slide" aria-label="1 of 3">
+        <div class="slide-split real">
+          <div class="txt">
+            <div class="slide-text">
+              <span class="eyebrow">Burrabazar, Kolkata · Since 2002</span>
+              <h1>Dressed for every occasion</h1>
+              <p>Ready-made clothes for men. Formal, ethnic, winter, casual and sportswear in sizes S to 5XL.</p>
+              <div class="actions">
+                <a class="btn btn-light" href="#collections">See collections</a>
+                <a class="btn btn-gold" href="tel:+917980965523"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1A17 17 0 0 1 3 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1z"/></svg>Call 79809 65523</a>
+              </div>
             </div>
+          </div>
+          <div class="pic shopfront">
+            <span class="blur" style="background-image:url(photos/shopfront.jpg)" aria-hidden="true"></span>
+            <figure>
+              <img src="photos/shopfront.jpg" alt="The real Yuvraj Mens Wear shop front on Shiv Thakur Lane, with its lit sign and mannequins at the door" width="177" height="222">
+              <figcaption>Our shop on Shiv Thakur Lane</figcaption>
+            </figure>
           </div>
         </div>
       </div>
