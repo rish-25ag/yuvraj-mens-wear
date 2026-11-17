@@ -170,6 +170,32 @@ section { padding-block: 88px; }
 .title .orn::before, .title .orn::after { content: ""; width: 44px; height: 1px; background: var(--gold); }
 .title .orn svg { width: 14px; height: 14px; }
 
+/* fabric swatches */
+.arch { position: relative; align-items: center !important; }
+.fab::after { content: ""; position: absolute; inset: 0; box-shadow: inset 0 0 60px rgba(0,0,0,.28); pointer-events: none; border-radius: inherit; }
+.fab.fab-formal { background-color: #1e2840; background-image: repeating-linear-gradient(90deg, rgba(255,255,255,.22) 0 1px, transparent 1px 16px), repeating-linear-gradient(0deg, rgba(255,255,255,.035) 0 1px, transparent 1px 3px), repeating-linear-gradient(90deg, rgba(0,0,0,.12) 0 1px, transparent 1px 3px); }
+.fab.fab-ethnic { background-color: #6b1424; background-image:
+  radial-gradient(circle, #e1b05a 0 2.2px, transparent 2.8px), radial-gradient(circle, rgba(225,176,90,.55) 0 1.4px, transparent 2px),
+  linear-gradient(45deg, transparent 46%, rgba(225,176,90,.28) 47% 53%, transparent 54%), linear-gradient(-45deg, transparent 46%, rgba(225,176,90,.28) 47% 53%, transparent 54%);
+  background-size: 28px 28px, 28px 28px, 28px 28px, 28px 28px; background-position: 0 0, 14px 14px, 0 0, 0 0; }
+.fab.fab-ethnic::before { content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 34px; background: repeating-linear-gradient(90deg, #e1b05a 0 6px, #b98a36 6px 8px), #e1b05a; border-top: 3px double #f3d38a; opacity: .92; }
+.fab.fab-winter { background-color: #6b4a30; background-image:
+  repeating-linear-gradient(45deg, rgba(255,255,255,.10) 0 3px, transparent 3px 6px), repeating-linear-gradient(-45deg, rgba(0,0,0,.18) 0 3px, transparent 3px 6px),
+  repeating-linear-gradient(90deg, rgba(0,0,0,.18) 0 1px, transparent 1px 24px), repeating-linear-gradient(0deg, rgba(240,200,140,.12) 0 1px, transparent 1px 24px); }
+.fab.fab-casual { background-color: #2b4a7d; background-image: repeating-linear-gradient(135deg, rgba(255,255,255,.10) 0 2px, transparent 2px 5px), repeating-linear-gradient(45deg, rgba(0,0,0,.10) 0 1px, transparent 1px 4px), linear-gradient(180deg, rgba(255,255,255,.06), rgba(0,0,0,.12)); }
+.fab.fab-casual::before { content: ""; position: absolute; left: 12%; right: 12%; bottom: 22px; height: 0; border-top: 2px dashed #d9a64a; opacity: .9; }
+.fab.fab-sports { background-color: #23252c; background-image: radial-gradient(circle, rgba(0,0,0,.55) 0 2.4px, transparent 3px), radial-gradient(circle, rgba(255,255,255,.07) 0 3.5px, transparent 4px); background-size: 10px 10px, 10px 10px; background-position: 0 0, 5px 5px; }
+.fab.fab-sports::before { content: ""; position: absolute; top: 0; bottom: 0; right: 18%; width: 18px; background: linear-gradient(90deg, #f4efe3 0 4px, transparent 4px 7px, #f4efe3 7px 11px, transparent 11px 14px, #f4efe3 14px 18px); opacity: .9; }
+.fab.fab-sizes { background-color: #f3e3b8; background-image: repeating-linear-gradient(90deg, rgba(60,40,0,.55) 0 1px, transparent 1px 10px), repeating-linear-gradient(90deg, rgba(60,40,0,.75) 0 2px, transparent 2px 50px); background-size: 100% 22px, 100% 34px; background-repeat: repeat-x; background-position: 0 0, 0 0; }
+.wlabel { position: relative; z-index: 1; display: grid; justify-items: center; gap: 2px; padding: 16px 26px 14px; background: #fbf7ef; color: #1b1b1b; outline: 1.5px dashed rgba(156,112,21,.7); outline-offset: -6px; box-shadow: 0 8px 18px rgba(0,0,0,.28); min-width: 150px; text-align: center; }
+.wlabel small { font-size: 10px; font-weight: 600; letter-spacing: .3em; color: var(--gold-deep); }
+.wlabel b { font-family: var(--font-logo); font-weight: 400; font-size: 30px; line-height: 1.1; }
+.wlabel i { font-style: normal; font-size: 10px; letter-spacing: .2em; color: var(--muted); }
+.fab.fab-sizes .wlabel b { font-size: 44px; color: var(--gold-deep); }
+/* fabric bolts in slide 2 */
+.bolts { display: grid !important; grid-template-columns: repeat(3, 1fr); gap: 0; padding: 0 !important; }
+.bolts span { position: relative; }
+.bolts span::after { content: ""; position: absolute; inset: 0; box-shadow: inset -18px 0 30px rgba(0,0,0,.25), inset 10px 0 20px rgba(255,255,255,.06); }
 /* collections */
 .collections { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 36px 28px; }
 @media (max-width: 900px) { .collections { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 28px 18px; } }
@@ -469,11 +495,7 @@ section { padding-block: 88px; }
               <div class="actions"><a class="btn" href="#c-ethnic">Ethnic wear</a><a class="btn btn-ghost" href="#c-winter">Winter wear</a></div>
             </div>
           </div>
-          <div class="pic art-pic" aria-hidden="true">
-            <svg class="g" viewBox="0 0 120 200"><use href="#sherwani" style="--c:#7a1c2e;--d:#e3b75a"/></svg>
-            <svg class="g" viewBox="0 0 120 150"><use href="#nehru" style="--c:#c9962b;--d:#4a3109"/></svg>
-            <svg class="g" viewBox="0 0 120 160"><use href="#puffer" style="--c:#3f4a3a;--d:#20271c"/></svg>
-          </div>
+          <div class="pic bolts" aria-hidden="true"><span class="fab fab-ethnic"></span><span style="background:#c9962b;background-image:repeating-linear-gradient(0deg, rgba(255,255,255,.12) 0 1px, transparent 1px 4px)"></span><span class="fab fab-winter"></span></div>
         </div>
       </div>
       <div class="slide" aria-roledescription="slide" aria-label="3 of 3">
@@ -517,42 +539,27 @@ section { padding-block: 88px; }
       </div>
       <div class="collections">
         <article class="card-c" id="c-formal">
-          <div class="arch"><div class="art" aria-hidden="true">
-            <svg class="g" viewBox="0 0 120 150"><use href="#shirt" style="--c:#e9eef6;--d:#6c7a96"/></svg>
-            <svg class="g" viewBox="0 0 120 160"><use href="#blazer" style="--c:#2f3a52;--d:#151b28"/></svg>
-          </div></div>
+          <div class="arch fab fab-formal" aria-hidden="true"><span class="wlabel"><small>YUVRAJ</small><b>Formal</b><i>KOLKATA · 2002</i></span></div>
           <span class="for">For the office</span><h3>Formal Wear</h3><p class="items">Formal shirts, blazers and formal pants</p>
         </article>
         <article class="card-c" id="c-ethnic">
-          <div class="arch"><div class="art" aria-hidden="true">
-            <svg class="g" viewBox="0 0 120 190"><use href="#kurta" style="--c:#f1e3c0;--d:#a8792a"/></svg>
-            <svg class="g" viewBox="0 0 120 200"><use href="#sherwani" style="--c:#7a1c2e;--d:#e3b75a"/></svg>
-          </div></div>
+          <div class="arch fab fab-ethnic" aria-hidden="true"><span class="wlabel"><small>YUVRAJ</small><b>Ethnic</b><i>KOLKATA · 2002</i></span></div>
           <span class="for">Weddings &amp; festivals</span><h3>Ethnic Wear</h3><p class="items">Kurtas, Nehru jackets, sherwanis and suits</p>
         </article>
         <article class="card-c" id="c-winter">
-          <div class="arch"><div class="art" aria-hidden="true">
-            <svg class="g" viewBox="0 0 120 150"><use href="#sweater" style="--c:#b8703f;--d:#6e3816"/></svg>
-            <svg class="g" viewBox="0 0 120 160"><use href="#puffer" style="--c:#3f4a3a;--d:#20271c"/></svg>
-          </div></div>
+          <div class="arch fab fab-winter" aria-hidden="true"><span class="wlabel"><small>YUVRAJ</small><b>Winter</b><i>KOLKATA · 2002</i></span></div>
           <span class="for">December to February</span><h3>Winter Wear</h3><p class="items">Sweaters, sweatshirts, jackets and turtle necks</p>
         </article>
         <article class="card-c" id="c-casual">
-          <div class="arch"><div class="art" aria-hidden="true">
-            <svg class="g" viewBox="0 0 120 150"><use href="#tee" style="--c:#f7f5ef;--d:#9aa3b5"/></svg>
-            <svg class="g" viewBox="0 0 120 170"><use href="#jeans" style="--c:#2d4f8a;--d:#a9c1e6"/></svg>
-          </div></div>
+          <div class="arch fab fab-casual" aria-hidden="true"><span class="wlabel"><small>YUVRAJ</small><b>Casual</b><i>KOLKATA · 2002</i></span></div>
           <span class="for">Everyday &amp; college</span><h3>Casual Wear</h3><p class="items">Casual shirts, polo and round neck T-shirts, jeans, trousers, shorts and tracks</p>
         </article>
         <article class="card-c" id="c-sports">
-          <div class="arch"><div class="art" aria-hidden="true">
-            <svg class="g" viewBox="0 0 120 150"><use href="#track" style="--c:#24262e;--d:#c9962b"/></svg>
-            <svg class="g" viewBox="0 0 120 100"><use href="#shorts" style="--c:#3a3d48;--d:#c9962b"/></svg>
-          </div></div>
+          <div class="arch fab fab-sports" aria-hidden="true"><span class="wlabel"><small>YUVRAJ</small><b>Sports</b><i>KOLKATA · 2002</i></span></div>
           <span class="for">Gym, walks &amp; games</span><h3>Sports Wear</h3><p class="items">Dry-fit T-shirts, dry-fit tracks, track suits, jackets and shorts</p>
         </article>
         <article class="card-c">
-          <div class="arch" style="align-items:center"><span style="font-family:var(--font-head);font-size:clamp(64px,8vw,96px);line-height:1;color:var(--gold-deep)">5XL</span></div>
+          <div class="arch fab fab-sizes" aria-hidden="true"><span class="wlabel"><small>SIZES</small><b>S – 5XL</b><i>BIG &amp; TALL</i></span></div>
           <span class="for">Big &amp; tall</span><h3>Every Size</h3><p class="items">Shirts and T-shirts from S all the way to 5XL</p>
         </article>
       </div>
