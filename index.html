@@ -197,11 +197,13 @@ section { padding-block: 88px; }
 .bolts span { position: relative; }
 .bolts span::after { content: ""; position: absolute; inset: 0; box-shadow: inset -18px 0 30px rgba(0,0,0,.25), inset 10px 0 20px rgba(255,255,255,.06); }
 /* collections */
+.arch.photo { background: #efe5d3; }
+.arch.photo img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 35%; }
 .collections { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 36px 28px; }
 @media (max-width: 900px) { .collections { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 28px 18px; } }
 @media (max-width: 480px) { .collections { grid-template-columns: 1fr; } }
-.card-c { display: grid; gap: 16px; text-align: center; scroll-margin-top: 100px; }
-.arch { background: var(--cream); border-radius: 999px 999px 0 0; aspect-ratio: 4 / 3.4; display: flex; align-items: flex-end; justify-content: center; overflow: hidden; border: 1px solid var(--line); }
+.card-c { display: grid; gap: 16px; text-align: center; align-content: start; scroll-margin-top: 100px; }
+.arch { background: var(--cream); border-radius: 999px 999px 0 0; aspect-ratio: 4 / 5; display: flex; align-items: flex-end; justify-content: center; overflow: hidden; border: 1px solid var(--line); }
 .arch .art { display: flex; align-items: flex-end; justify-content: center; padding-bottom: 0; }
 .arch .art svg { width: clamp(96px, 13vw, 150px); height: auto; filter: drop-shadow(0 10px 10px rgba(0,0,0,.12)); }
 .arch .art svg + svg { margin-left: -26px; }
@@ -500,7 +502,7 @@ section { padding-block: 88px; }
               <div class="actions"><a class="btn" href="#c-ethnic">Ethnic wear</a><a class="btn btn-ghost" href="#c-winter">Winter wear</a></div>
             </div>
           </div>
-          <div class="pic bolts" aria-hidden="true"><span class="fab fab-ethnic"></span><span style="background:#c9962b;background-image:repeating-linear-gradient(0deg, rgba(255,255,255,.12) 0 1px, transparent 1px 4px)"></span><span class="fab fab-winter"></span></div>
+          <div class="pic"><img src="photos/col-winter.jpg" alt="A rust sweater, a black turtle neck and an olive puffer jacket on wooden hangers" width="900" height="1125" style="object-position:50% 40%"></div>
         </div>
       </div>
       <div class="slide" aria-roledescription="slide" aria-label="3 of 3">
@@ -544,23 +546,23 @@ section { padding-block: 88px; }
       </div>
       <div class="collections">
         <article class="card-c" id="c-formal">
-          <div class="arch fab fab-formal" aria-hidden="true"><span class="wlabel"><small>YUVRAJ</small><b>Formal</b><i>KOLKATA · 2002</i></span></div>
+          <div class="arch photo"><img src="photos/col-formal.jpg" alt="A stack of folded shirts in many colours with a tailor's measuring tape, shirts on hangers behind" width="900" height="1125" loading="lazy"></div>
           <span class="for">For the office</span><h3>Formal Wear</h3><p class="items">Formal shirts, blazers and formal pants</p>
         </article>
         <article class="card-c" id="c-ethnic">
-          <div class="arch fab fab-ethnic" aria-hidden="true"><span class="wlabel"><small>YUVRAJ</small><b>Ethnic</b><i>KOLKATA · 2002</i></span></div>
+          <div class="arch photo"><img src="photos/col-ethnic.jpg" alt="A maroon embroidered long coat, a cream silk kurta and a mustard Nehru jacket on wooden hangers" width="900" height="1125" loading="lazy"></div>
           <span class="for">Weddings &amp; festivals</span><h3>Ethnic Wear</h3><p class="items">Kurtas, kurta-pajama sets, Nehru jackets and suits</p>
         </article>
         <article class="card-c" id="c-winter">
-          <div class="arch fab fab-winter" aria-hidden="true"><span class="wlabel"><small>YUVRAJ</small><b>Winter</b><i>KOLKATA · 2002</i></span></div>
+          <div class="arch photo"><img src="photos/col-winter.jpg" alt="A rust sweater, a black turtle neck and an olive puffer jacket on wooden hangers" width="900" height="1125" loading="lazy"></div>
           <span class="for">December to February</span><h3>Winter Wear</h3><p class="items">Sweaters, sweatshirts, jackets and turtle necks</p>
         </article>
         <article class="card-c" id="c-casual">
-          <div class="arch fab fab-casual" aria-hidden="true"><span class="wlabel"><small>YUVRAJ</small><b>Casual</b><i>KOLKATA · 2002</i></span></div>
+          <div class="arch photo"><img src="photos/col-casual.jpg" alt="Folded polo T-shirts, round neck T-shirts, blue jeans and a check shirt on a wooden shelf" width="900" height="1125" loading="lazy"></div>
           <span class="for">Everyday &amp; college</span><h3>Casual Wear</h3><p class="items">Casual shirts, polo and round neck T-shirts, jeans, trousers, shorts and tracks</p>
         </article>
         <article class="card-c" id="c-sports">
-          <div class="arch fab fab-sports" aria-hidden="true"><span class="wlabel"><small>YUVRAJ</small><b>Sports</b><i>KOLKATA · 2002</i></span></div>
+          <div class="arch photo"><img src="photos/col-sports.jpg" alt="A black track jacket, a grey dry-fit T-shirt and folded black track shorts" width="900" height="1125" loading="lazy"></div>
           <span class="for">Gym, walks &amp; games</span><h3>Sports Wear</h3><p class="items">Dry-fit T-shirts, dry-fit tracks, track suits, jackets and shorts</p>
         </article>
         <article class="card-c">
